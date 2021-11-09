@@ -6,7 +6,7 @@
 
 	console.log(window.lightdm.users);
 
-	window.lightdm.authenticate("johnd");
+	window.lightdm.authenticate();
 
 	let submit = () => {
 		console.log("authentication");

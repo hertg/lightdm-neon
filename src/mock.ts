@@ -71,36 +71,35 @@ export function mock() {
         },
         ],
 
-        authenticate: (username) => {
-        console.log("Starting authentication for user:", username);
-        window.lightdm.in_authentication = true;
-        window.lightdm.authentication_user = username;
-
-        window.show_prompt("Password: ", "password");
+        authenticate: (username: string) => {
+            if (username === undefined) {
+                window.show_prompt("Username:", "text");
+            } else {
+                console.log("Starting authentication for user:", username);
+                window.lightdm.in_authentication = true;
+                window.lightdm.authentication_user = username;
+                window.show_prompt("Password: ", "password");
+            }
         },
         cancel_authentication: () => {
-        console.log("Authentication cancelled.");
+            console.log("Authentication cancelled.");
         },
         respond: (password) => {
-        console.log("Password provided:", password);
-
-        if (password === DEBUG_PASSWORD) {
-            window.lightdm.is_authenticated = true;
-            window.lightdm.in_authentication = false;
-            window.authentication_complete();
-            return;
-        }
-
-        setTimeout(() => {
-            window.lightdm.in_authentication = false;
-            window.lightdm.is_authenticated = false;
-            window.authentication_complete();
-        }, 2000);
+            console.log("Password provided:", password);
+            if (password === DEBUG_PASSWORD) {
+                window.lightdm.is_authenticated = true;
+                window.lightdm.in_authentication = false;
+                window.authentication_complete();
+                return;
+            }
+            setTimeout(() => {
+                window.lightdm.in_authentication = false;
+                window.lightdm.is_authenticated = false;
+                window.authentication_complete();
+            }, 2000);
         },
         start_session_sync: (session) => {
-        alert(
-            `Logging in as '${window.lightdm.authentication_user}' (Session: '${session}')`
-        );
+            alert(`Logging in as '${window.lightdm.authentication_user}' (Session: '${session}')`);
         },
 
         // Stubs for power management
