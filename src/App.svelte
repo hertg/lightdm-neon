@@ -1,23 +1,18 @@
 <script lang="ts">
-	export let name: string;
-	
+	import Greeter from "./components/Greeter.svelte";
 	let username: string;
 	let password: string;
 
-	console.log(window.lightdm.users);
-
-	window.lightdm.authenticate();
+	//window.lightdm.authenticate();
 
 	let submit = () => {
-		console.log("authentication");
-	}
+		lightdm.authenticate(username);
+		//window.lightdm.authenticate(username);
+	};
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<input type="text" name="username" bind:value={username} />
-	<input type="password" name="password" bind:value={password} />
-	<button type="submit" on:click={submit}>Login</button>
+	<Greeter />
 </main>
 
 <style>

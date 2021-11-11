@@ -1,6 +1,12 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
 
+  "compilerOptions": {
+    "typeRoots": [
+      "./node_modules/lightdm-webkit2-typescript"
+    ]
+  },
+
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }

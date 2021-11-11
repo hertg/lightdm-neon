@@ -5,10 +5,15 @@
 interface Window {
     // Functions expected by lightdm-webkit-greeter
     
-    
+    /**
+     * This function is called by LightDM when authentication has completed.
+     */
     authentication_complete(): void;
 
-
+    /**
+     * This function is called by LightDM when an autologin user's login timer has expired. 
+     * The greeter should reset the authentication process.
+     */
     autologin_timer_expired(): void;
 
     /**
@@ -32,7 +37,10 @@ interface Window {
     show_prompt(text: string, type: "text" | "password"): void;
   
     // Objects provided by lightdm-webkit-greeter
-    config: LightDMConfig;
+    config: LightDM.GreeterConfig;
+    greeterutil: LightDM.ThemeUtils;
+    lightdm: LightDM.Greeter;
+    /*config: LightDMConfig;
     greeterutil: LightDMUtil;
-    lightdm: LightDM;
+    lightdm: LightDM;*/
   }

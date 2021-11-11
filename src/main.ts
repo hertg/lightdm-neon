@@ -1,13 +1,17 @@
 import App from './App.svelte';
-import { mock } from './mock';
-
-if (window.lightdm === undefined) {
-	mock();
-}
+import { useLightDM } from './utils/LightDMProvider';
 
 window.show_prompt = (text, type) => {
+	/*if (type === "text") {
+
+	} else {
+
+	}
+	console.log(useLightDM.in_authentication);
 	let answer = prompt(text);
-	window.lightdm.respond(answer);
+	useLightDM.respond(answer);
+	console.log(useLightDM.in_authentication);*/
+	console.log(`show_prompt ${text} ${type}`);
 }
 
 window.show_message = (text, type) => {
@@ -16,11 +20,10 @@ window.show_message = (text, type) => {
 
 window.authentication_complete = () => {
 	console.log("authentication_complete");
-	if (window.lightdm.is_authenticated) {
-		window.lightdm.start_session_sync("leftwm"); // todo
+	if (useLightDM.is_authenticated) {
+		useLightDM.start_session_sync(); // todo
 	} else {
 		window.show_message("Authentication Failed", "error");
-		
 	}	
 }
 
