@@ -1,14 +1,28 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import Greeter from "./components/Greeter.svelte";
-	let username: string;
-	let password: string;
+	import { useLightDM } from "./utils/LightDMProvider";
 
-	//window.lightdm.authenticate();
+	onMount(async () => {
+		window.show_message = (msg: string) => {
+			console.log(`message: ${msg}`);
+		};
+		window.show_prompt = (text: string, type: "text" | "password") => {
+			console.log(`prompt (${type}): ${text}`);
+		};
+		window.authentication_complete = () => {
+			console.log("authentication_complete");
+			if (useLightDM.is_authenticated) {
+				useLightDM.start_session_sync(); // todo
+			} else {
+				window.show_message("Authentication Failed", "error");
+			}
+		};
 
-	let submit = () => {
-		lightdm.authenticate(username);
-		//window.lightdm.authenticate(username);
-	};
+		window.autologin_timer_expired = () => {
+			console.log("autologin_timer_expired");
+		};
+	});
 </script>
 
 <main>
