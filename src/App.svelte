@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import Greeter from "./components/Greeter.svelte";
-	import { useLightDM } from "./utils/LightDMProvider";
+	import { lightdm } from "./utils/LightDMProvider";
 
 	onMount(async () => {
+		console.log(lightdm);
 		window.show_message = (msg: string) => {
 			console.log(`message: ${msg}`);
 		};
@@ -12,8 +13,8 @@
 		};
 		window.authentication_complete = () => {
 			console.log("authentication_complete");
-			if (useLightDM.is_authenticated) {
-				useLightDM.start_session_sync(); // todo
+			if (lightdm.is_authenticated) {
+				lightdm.start_session_sync(); // todo
 			} else {
 				window.show_message("Authentication Failed", "error");
 			}
@@ -35,13 +36,6 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {

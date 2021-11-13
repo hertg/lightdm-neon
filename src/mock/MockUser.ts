@@ -1,4 +1,4 @@
-export class MockUser implements LightDM.User {
+export class MockUser implements LightDMUser {
     display_name: string;
     language: string;
     layout: string;
@@ -10,7 +10,7 @@ export class MockUser implements LightDM.User {
     name: string;
     real_name: string;
 
-    public static newMock(displayname: string, username: string): LightDM.User {
+    public static newMock(displayname: string, username: string): LightDMUser {
         let user = new MockUser();
         user.display_name = displayname;
         user.username = username;

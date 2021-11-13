@@ -1,4 +1,5 @@
-export class MockGreeterUtil implements LightDM.ThemeUtils{
+export {};
+/*export class MockGreeterUtil implements LightDM.ThemeUtils{
     
     bind_this(context: object) {
         throw new Error("Method not implemented.");
@@ -20,4 +21,4 @@ export class MockGreeterUtil implements LightDM.ThemeUtils{
         throw new Error("Method not implemented.");
     }
 
-}
+}*/

@@ -37,9 +37,9 @@ interface Window {
     show_prompt(text: string, type: "text" | "password"): void;
   
     // Objects provided by lightdm-webkit-greeter
-    config: LightDM.GreeterConfig;
-    greeterutil: LightDM.ThemeUtils;
-    lightdm: LightDM.Greeter;
+    //config: LightDM.GreeterConfig;
+    //greeterutil: LightDM.ThemeUtils;
+    lightdm: LightDMGreeter;
     /*config: LightDMConfig;
     greeterutil: LightDMUtil;
     lightdm: LightDM;*/

@@ -1,14 +1,14 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { inAuthentication } from "../store/LightDMStore";
-    import { useLightDM } from "../utils/LightDMProvider";
+    import { lightdm } from "../utils/LightDMProvider";
 
     let username: string = null;
     let password: string = null;
     
     let submit = () => {
-        useLightDM.authenticate(username);
-        setTimeout(() => useLightDM.respond(password), 500);
+        lightdm.authenticate(username);
+        setTimeout(() => lightdm.respond(password), 500);
     };
 
     setInterval(() => {

@@ -1,5 +1,5 @@
 import { writable, Writable } from "svelte/store";
-import { useLightDM } from "../utils/LightDMProvider";
+import { lightdm } from "../utils/LightDMProvider";
 
 /*class LightDMStore {
     constructor(
@@ -10,5 +10,21 @@ import { useLightDM } from "../utils/LightDMProvider";
 
 export const lightDMStore = new LightDMStore();*/
 
-export const inAuthentication: Writable<boolean> = writable(useLightDM.in_authentication);
-export const isAuthenticated: Writable<boolean> = writable(useLightDM.is_authenticated);
+export const inAuthentication: Writable<boolean> = writable(lightdm.in_authentication);
+export const isAuthenticated: Writable<boolean> = writable(lightdm.is_authenticated);
+
+//
+
+let inAuth = lightdm.in_authentication;
+let isAuth = lightdm.is_authenticated;
+setInterval(() => {
+    if (inAuth !== lightdm.in_authentication) {
+        inAuthentication.update(curr => curr = lightdm.in_authentication);
+        inAuth = lightdm.in_authentication;
+    }
+
+    if (isAuth !== lightdm.is_authenticated) {
+        isAuthenticated.update(curr => curr = lightdm.is_authenticated);
+        inAuth = lightdm.is_authenticated;
+    }
+}, 50);

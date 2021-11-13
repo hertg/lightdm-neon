@@ -1,3 +1,5 @@
+export {};
+/*
 export class MockConfig implements LightDM.GreeterConfig {
     
     get_bool(config_section: string, key: string): boolean {
@@ -15,4 +17,4 @@ export class MockConfig implements LightDM.GreeterConfig {
     branding: object;
     greeter: object;
 
-}
+}*/
