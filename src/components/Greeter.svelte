@@ -10,11 +10,6 @@
         lightdm.authenticate(username);
         setTimeout(() => lightdm.respond(password), 500);
     };
-
-    setInterval(() => {
-        //console.log(lightdm);
-        //console.log(`interval: ${lightdm.authentication_user}`);
-    }, 1000);
 </script>
 
 <h1>junge ({$inAuthentication})</h1>

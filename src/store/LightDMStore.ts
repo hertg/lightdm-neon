@@ -13,7 +13,7 @@ export const lightDMStore = new LightDMStore();*/
 export const inAuthentication: Writable<boolean> = writable(lightdm.in_authentication);
 export const isAuthenticated: Writable<boolean> = writable(lightdm.is_authenticated);
 
-//
+// keep in sync
 
 let inAuth = lightdm.in_authentication;
 let isAuth = lightdm.is_authenticated;

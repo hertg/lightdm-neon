@@ -241,6 +241,7 @@ interface LightDMLanguage {
     territory: string
 }
 
+// keyboard layout
 interface LightDMLayout {
     description: string
     name: string
@@ -256,12 +257,59 @@ interface LightDMSession {
 interface LightDMUser {
     display_name: string
     home_directory: string
-    image: string | null // white N
-    language: string | null // white N
-    layout: string | null // white N
+    image: string | null
+    language: string | null
+    layout: string | null
     logged_in: boolean
     name: string
     real_name: string
-    session: string | null // white N
+    session: string | null
     username: string
+}
+
+interface LightDMConfig {
+    /**
+     * Returns the string value associated with key 
+     * under the "section" in the configuration file.
+     * 
+     * @param section 
+     * @param key 
+     */
+    get_str(section: string, key: string): string;
+
+    /**
+     * Returns the numeric value associated with key 
+     * under the "section" in the configuration file.
+     * 
+     * @param section 
+     * @param key 
+     */
+    get_num(section: string, key: string): number;
+
+    /**
+     * Returns the boolean value associated with key 
+     * under the "section" in the configuration file.
+     * 
+     * @param section 
+     * @param key 
+     */
+    get_bool(section: string, key: string): boolean;
+}
+
+interface LightDMUtil {
+    /**
+     * Returns an array of strings of filenames present at "path", 
+     * or Null if the path does not exist.
+     * @param path 
+     */
+    dirlist(path: string): string[] | null;
+
+    /**
+     * Returns a simple HTML conversion of the passed text. 
+     * Newlines are replaced with <br>, and the characters &, <, >, and " are 
+     * replaced with their HTML equivalents.
+     * 
+     * @param txt 
+     */
+    txt2html(txt: string): HTML;
 }

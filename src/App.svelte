@@ -1,20 +1,24 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import Greeter from "./components/Greeter.svelte";
-	import { lightdm } from "./utils/LightDMProvider";
+	import { navigateTo, Router } from 'svelte-router-spa';
+	import { routes } from './router';
 
 	onMount(async () => {
-		console.log(lightdm);
 		window.show_message = (msg: string) => {
 			console.log(`message: ${msg}`);
 		};
 		window.show_prompt = (text: string, type: "text" | "password") => {
 			console.log(`prompt (${type}): ${text}`);
+			if (type === "password") {
+				navigateTo('login');
+			} else {
+				
+			}
 		};
 		window.authentication_complete = () => {
 			console.log("authentication_complete");
-			if (lightdm.is_authenticated) {
-				lightdm.start_session_sync(); // todo
+			if (window.lightdm.is_authenticated) {
+				window.lightdm.start_session_sync(); // todo
 			} else {
 				window.show_message("Authentication Failed", "error");
 			}
@@ -26,21 +30,7 @@
 	});
 </script>
 
-<main>
-	<Greeter />
-</main>
+<Router {routes}></Router>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>

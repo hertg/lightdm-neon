@@ -1,7 +1,10 @@
+import { MockConfig } from "../mock/MockConfig";
 import { MockGreeter } from "../mock/MockGreeter";
+import { MockGreeterUtil } from "../mock/MockGreeterUtil";
 
-const actualLightDM = window.lightdm;
 export const lightdm: LightDMGreeter = window.lightdm || new MockGreeter();
+export const config: LightDMConfig = window.config || new MockConfig();
+export const greeterutil: LightDMUtil = window.greeterutil || new MockGreeterUtil();
 
 /*
 => This doesn't work with the real lightdm script:
