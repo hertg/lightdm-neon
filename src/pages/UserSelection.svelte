@@ -14,5 +14,5 @@
     {/each}
     
     <!-- login with a user that isn't listed here -->
-    <button on:click={() => navigateTo('user')}>Other</button>
+    <button class="bg-teal-500" on:click={() => navigateTo('user')}>Other</button>
 </li>

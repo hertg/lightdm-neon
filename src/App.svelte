@@ -12,7 +12,7 @@
 			if (type === "password") {
 				navigateTo('login');
 			} else {
-				
+
 			}
 		};
 		window.authentication_complete = () => {
@@ -30,7 +30,15 @@
 	});
 </script>
 
+<h1>LightDM</h1>
 <Router {routes}></Router>
 
-<style>
+<style windi:preflights:global windi:safelist:global>
+	h1 {
+		@apply text-red-500;
+	}
+
+	:global(body) {
+		@apply bg-gray-300;
+	}
 </style>
