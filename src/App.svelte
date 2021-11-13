@@ -1,26 +1,30 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { navigateTo, Router } from 'svelte-router-spa';
-	import { routes } from './router';
+	import routes from './router';
+	import { push } from 'svelte-spa-router'
+	import Router from 'svelte-spa-router'
 
 	onMount(async () => {
 		window.show_message = (msg: string) => {
 			console.log(`message: ${msg}`);
 		};
+
 		window.show_prompt = (text: string, type: "text" | "password") => {
 			console.log(`prompt (${type}): ${text}`);
 			if (type === "password") {
-				navigateTo('login');
+				push('/login');
 			} else {
 
 			}
 		};
+
 		window.authentication_complete = () => {
 			console.log("authentication_complete");
 			if (window.lightdm.is_authenticated) {
 				window.lightdm.start_session_sync(); // todo
 			} else {
 				window.show_message("Authentication Failed", "error");
+				window.lightdm.authenticate(window.lightdm.authentication_user);
 			}
 		};
 
@@ -30,8 +34,10 @@
 	});
 </script>
 
+<body>
 <h1>LightDM</h1>
-<Router {routes}></Router>
+<Router {routes} />
+</body>
 
 <style windi:preflights:global windi:safelist:global>
 	h1 {

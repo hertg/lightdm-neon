@@ -1,12 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { navigateTo } from "svelte-router-spa";
+    import { push } from 'svelte-spa-router'
 
     let password: string;
 
     onMount(async() => {
         if (window.lightdm.authentication_user === null) {
-            navigateTo('select-user');
+            push('/select-user');
         }
     });
 

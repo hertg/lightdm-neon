@@ -1,13 +1,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { navigateTo } from 'svelte-router-spa';
+    import { push } from 'svelte-spa-router'
 
     // todo: allow disabling splash screen
     const TIMEOUT: number = 1000; // 1s
 
     onMount(async() => {
         setTimeout(() => {
-            navigateTo('select-user');
+            push('/select-user');
         }, TIMEOUT);
     })
 </script>

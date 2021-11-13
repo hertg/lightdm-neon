@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { navigateTo } from "svelte-router-spa";
+    import { push } from 'svelte-spa-router'
 
     $: users = window.lightdm.users;
     let select = (username: string) => {
@@ -14,5 +14,5 @@
     {/each}
     
     <!-- login with a user that isn't listed here -->
-    <button class="bg-teal-500" on:click={() => navigateTo('user')}>Other</button>
+    <button class="bg-teal-500" on:click={() => push('/user')}>Other</button>
 </li>
