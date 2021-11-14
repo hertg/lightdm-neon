@@ -42,7 +42,9 @@ export default {
 	plugins: [
 		svelte({
 			preprocess: [
-				windi({}),
+				windi({
+					configPath: './windi.config.js',
+				}),
 				sveltePreprocess({ sourceMap: !production })
 			],
 			compilerOptions: {

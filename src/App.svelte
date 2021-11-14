@@ -31,6 +31,7 @@
 
 		window.autologin_timer_expired = () => {
 			console.log("autologin_timer_expired");
+			// todo
 		};
 	});
 </script>
@@ -47,12 +48,11 @@
 	}
 
 	:global(body) {
-		@apply bg-gradient-to-r from-green-400 to-blue-500 h-screen flex justify-center items-center;
+		@apply bg-gradient-to-r from-primary to-secondary h-screen flex justify-center items-center;
 	}
 
 	main {
 		width: 100%;
-		max-width: 620px;
-		/*@apply container;*/
+		max-width: 420px;
 	}
 </style>
