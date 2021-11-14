@@ -4,6 +4,9 @@
 	import Card from "./components/Card.svelte";
 	import { splashscreenSeen } from "./store/LightDMStore";
 
+	const logoUrl: string = window.config.get_str("branding", "logo");
+	const background: string = window.config.get_str("branding", "background");
+
 	const toHome = () => {
 		if ($splashscreenSeen) {
 			window.lightdm.cancel_authentication();
@@ -14,20 +17,26 @@
 	}
 </script>
 
-<main>
-	<p on:click={toHome}>Logo placeholder</p>
-	<Card>
-		<Router {routes} />
-	</Card>
-</main>
+<div id="wrapper" style="--bg-image: url('{background}')">
+	<main>
+		<img src="{logoUrl}" on:click={toHome} />
+		<Card>
+			<Router {routes} />
+		</Card>
+	</main>
+</div>
+
 
 <style windi:preflights:global windi:safelist:global>
 	:global(html) {
 		@apply h-screen;
 	}
 
-	:global(body) {
-		@apply bg-gradient-to-r from-primary to-secondary h-screen flex justify-center items-center;
+	#wrapper {
+		/*bg-gradient-to-r from-primary to-secondary */
+		@apply h-screen flex justify-center items-center;
+		/*background-image: var(--bg-image);*/
+		background-image: url('/images/background.jpg');
 	}
 
 	main {
@@ -36,7 +45,8 @@
 		@apply flex flex-col;
 	}
 
-	p {
+	img {
 		@apply text-center;
+		cursor: pointer;
 	}
 </style>
