@@ -24,6 +24,10 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
    lightdm-webkit2-greeter
    ```
 
+## Dependencies
+- Rollup
+- https://github.com/ItalyPaleAle/svelte-spa-router
+
 ## Resources
 - [Building a LightDM Webkit Greeter Theme](https://www.chathandriehuys.com/blog/posts/2021/01/building-a-lightdm-webkit-greeter-theme/) (chathandriehuys.com)
 - [lightdm-webkit-theme](https://github.com/cdriehuys/lightdm-webkit-theme) (github.com)

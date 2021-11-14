@@ -3,6 +3,7 @@
 	import routes from './router';
 	import { push } from 'svelte-spa-router'
 	import Router from 'svelte-spa-router'
+	import Card from "./components/Card.svelte";
 
 	onMount(async () => {
 		window.show_message = (msg: string) => {
@@ -14,7 +15,7 @@
 			if (type === "password") {
 				push('/login');
 			} else {
-
+				push('/user');
 			}
 		};
 
@@ -34,17 +35,24 @@
 	});
 </script>
 
-<body>
-<h1>LightDM</h1>
-<Router {routes} />
-</body>
+<main>
+	<Card>
+		<Router {routes} />
+	</Card>
+</main>
 
 <style windi:preflights:global windi:safelist:global>
-	h1 {
-		@apply text-red-500;
+	:global(html) {
+		@apply h-screen;
 	}
 
 	:global(body) {
-		@apply bg-gray-300;
+		@apply bg-gradient-to-r from-green-400 to-blue-500 h-screen flex justify-center items-center;
+	}
+
+	main {
+		width: 100%;
+		max-width: 620px;
+		/*@apply container;*/
 	}
 </style>

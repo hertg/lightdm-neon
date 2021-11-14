@@ -1,10 +1,10 @@
 /**
  * Attribution: These typings for the LightDM API were 
  * copied from https://github.com/cdriehuys/lightdm-webkit-theme.
+ * 
+ * These methods must be implemented by the theme.
  */
-interface Window {
-    // Functions expected by lightdm-webkit-greeter
-    
+interface Window {    
     /**
      * This function is called by LightDM when authentication has completed.
      */
@@ -40,7 +40,4 @@ interface Window {
     config: LightDMConfig;
     greeterutil: LightDMUtil;
     lightdm: LightDMGreeter;
-    /*config: LightDMConfig;
-    greeterutil: LightDMUtil;
-    lightdm: LightDM;*/
   }
