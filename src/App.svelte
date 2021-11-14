@@ -1,42 +1,21 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import routes from './router';
-	import { push } from 'svelte-spa-router'
-	import Router from 'svelte-spa-router'
+	import Router, { push } from 'svelte-spa-router'
 	import Card from "./components/Card.svelte";
+	import { splashscreenSeen } from "./store/LightDMStore";
 
-	onMount(async () => {
-		window.show_message = (msg: string) => {
-			console.log(`message: ${msg}`);
-		};
-
-		window.show_prompt = (text: string, type: "text" | "password") => {
-			console.log(`prompt (${type}): ${text}`);
-			if (type === "password") {
-				push('/login');
-			} else {
-				push('/user');
-			}
-		};
-
-		window.authentication_complete = () => {
-			console.log("authentication_complete");
-			if (window.lightdm.is_authenticated) {
-				window.lightdm.start_session_sync(); // todo
-			} else {
-				window.show_message("Authentication Failed", "error");
-				window.lightdm.authenticate(window.lightdm.authentication_user);
-			}
-		};
-
-		window.autologin_timer_expired = () => {
-			console.log("autologin_timer_expired");
-			// todo
-		};
-	});
+	const toHome = () => {
+		if ($splashscreenSeen) {
+			window.lightdm.cancel_authentication();
+			push("/select-user");
+		} else {
+			push("/");
+		}
+	}
 </script>
 
 <main>
+	<p on:click={toHome}>Logo placeholder</p>
 	<Card>
 		<Router {routes} />
 	</Card>
@@ -54,5 +33,10 @@
 	main {
 		width: 100%;
 		max-width: 420px;
+		@apply flex flex-col;
+	}
+
+	p {
+		@apply text-center;
 	}
 </style>
