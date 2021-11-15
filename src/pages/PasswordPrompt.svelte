@@ -1,9 +1,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { push, link } from "svelte-spa-router";
+    import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
 
-    const userImageUrl: string = window.config.get_str("branding", "user_image");
+    const user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
+    const defaultAvatar: string = window.config.get_str("branding", "user_image");
+    const userImageUrl: string = user && user.image !== null ? user.image : defaultAvatar;
+    
     let password: string = "";
 
     onMount(async () => {
@@ -12,27 +16,27 @@
         }
     });
 
-    let submit = () => {
+    const submit = () => {
         window.lightdm.respond(password);
         //window.lightdm.authenticate();
     };
 
-    let cancel = () => {
+    const cancel = () => {
         window.lightdm.cancel_authentication();
         push("/select-user");
     };
 </script>
 
 
-<img src={userImageUrl} />
-<h1>Enter password!</h1>
-<Input type="password" bind:value={password} />
-<!--<input type="password" bind:value={password}>-->
-<button on:click={submit}>Login</button>
-<button on:click={cancel}>cancel</button>
+<img id="avatar" src={userImageUrl} alt="avatar" />
+<Input label="Password" type="password" bind:value={password} on:enter={submit} autofocus />
+<Button primary on:click={submit}>Login</Button>
+<Button on:click={cancel}>Cancel</Button>
 
 <style>
-    img {
-        @apply rounded-full;
+    img#avatar {
+        max-width: 150px;
+        max-height: 150px;
+        @apply rounded-full mx-auto my-2;
     }
 </style>

@@ -3,6 +3,7 @@ import App from './App.svelte';
 import { MockConfig } from './mock/MockConfig';
 import { MockGreeter } from './mock/MockGreeter';
 import { MockGreeterUtil } from './mock/MockGreeterUtil';
+import { notify } from './utils/Notification';
 
 // mocks
 if (!window.lightdm) {
@@ -16,8 +17,9 @@ if (!window.config) {
 }
 
 // methods the theme must provide
-window.show_message = (msg: string) => {
+window.show_message = (msg: string, type: "error" | "info") => {
 	console.log(`message: ${msg}`);
+	notify(msg, type);
 };
 
 window.show_prompt = (text: string, type: "text" | "password") => {

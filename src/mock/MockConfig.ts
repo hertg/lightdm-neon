@@ -13,7 +13,7 @@ export class MockConfig implements LightDMConfig {
                     return "images/";
                 }
                 case "background": {
-                    return "images/background.jpg";
+                    return "/images/background.jpg";
                 }
                 default: {
                     return null;

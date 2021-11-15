@@ -63,7 +63,7 @@ export class MockGreeter implements LightDMGreeter {
         {
             display_name: "Michael",
             home_directory: "/home/michael",
-            image: null,
+            image: "images/avatar-michael.png",
             language: null,
             layout: null,
             logged_in: false,
@@ -91,13 +91,13 @@ export class MockGreeter implements LightDMGreeter {
         this.in_authentication = true;
         if (username === undefined || username === null || username.trim().length == 0) {
             this.promptedFor = PromptType.USERNAME;
-            window.show_prompt("enter your username", "text");
+            window.show_prompt("Login:", "text");
         } else {
             let user = this.users.find(o => o.username === username);
             if (user) {
                 this.authentication_user = username;
                 this.promptedFor = PromptType.PASSWORD;
-                window.show_prompt("enter your password", "password");
+                window.show_prompt("Password:", "password");
             } else {
                 window.show_message("This user doesn't exist", "error");
             }

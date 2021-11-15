@@ -24,6 +24,9 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
    lightdm-webkit2-greeter
    ```
 
+## Add a user avatar
+Add your avatar to your home directory and name it `.face`.
+
 ## Dependencies
 - Rollup
 - https://github.com/ItalyPaleAle/svelte-spa-router
@@ -33,3 +36,6 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
 - [lightdm-webkit-theme](https://github.com/cdriehuys/lightdm-webkit-theme) (github.com)
 - [lightdm-webkit2-greeter](https://github.com/antergos/web-greeter) (github.com)
 - [lightdm-webkit2-theme-reactive](https://github.com/gitneeraj/lightdm-webkit2-theme-reactive) (github.com)
+
+## Attribution
+- Example Avatars from [boringavatars.com](https://boringavatars.com/)

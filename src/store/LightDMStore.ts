@@ -13,6 +13,7 @@ export const lightDMStore = new LightDMStore();*/
 export const inAuthentication: Writable<boolean> = writable(lightdm.in_authentication);
 export const isAuthenticated: Writable<boolean> = writable(lightdm.is_authenticated);
 export const splashscreenSeen: Writable<boolean> = writable(false);
+export const notifications: Writable<GreeterNotification[]> = writable([]);
 
 // keep in sync
 
