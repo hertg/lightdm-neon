@@ -7,6 +7,7 @@
     export let autofocus: boolean = false;
     export let label: string = "";
     export let icon: string = "";
+    export let placeholder: string = "";
 
     const dispatch = createEventDispatcher();
 
@@ -20,11 +21,15 @@
 </script>
 
 <div class="input-container">
-    <label>{label}</label>
-    {#if icon}
-        <Icon {icon} />
+    {#if label}
+        <label>{label}</label>
     {/if}
-    <input use:handleInput bind:value={value} {autofocus} on:keypress={onKeypress} />
+    {#if icon}
+        <div class="input-icon">
+            <Icon {icon} />
+        </div>
+    {/if}
+    <input use:handleInput bind:value={value} {autofocus} on:keypress={onKeypress} {placeholder} />
 </div>
 
 <style>
@@ -32,7 +37,11 @@
         @apply relative;
     }
 
+    .input-icon {
+        @apply block w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 flex items-center;
+    }
+
     input {
-        @apply border-primary border-2 rounded-md p-2 pl-9 w-full my-4 box-border focus:outline-none focus:ring focus:border-primary;
+        @apply border-primary border-2 rounded-md p-2 w-full my-1 box-border focus:outline-none focus:ring focus:border-primary text-center;
     }
 </style>

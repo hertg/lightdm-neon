@@ -11,13 +11,17 @@
     }
 </script>
 
+
 {#each window.lightdm.users as user}
     <Button on:click={() => select(user.username)}>{user.display_name}</Button>
 {/each}
 
 <!-- login with a user that isn't listed here -->
-<Button on:click={other}>Other</Button>
+<p id="other-user" on:click={other}>Other</p>
+<!--<Button on:click={other}>Other</Button>-->
 
 <style>
-
+    #other-user {
+        @apply text-center cursor-pointer mt-4;
+    }
 </style>

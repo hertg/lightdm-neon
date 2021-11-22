@@ -26,7 +26,7 @@
 
 <div id="wrapper" style="--bg-image: url('{background}')">
 	<main>
-		<img src="{logoUrl}" alt="logo" on:click={toHome} />
+		<!--<img src="{logoUrl}" alt="logo" on:click={toHome} />-->
 		<Card>
 			<Router {routes} />
 		</Card>
@@ -36,7 +36,7 @@
 
 <style windi:preflights:global windi:safelist:global>
 	:global(html) {
-		@apply h-screen;
+		@apply h-screen font-sans;
 	}
 
 	#wrapper {

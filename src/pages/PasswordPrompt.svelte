@@ -29,14 +29,19 @@
 
 
 <img id="avatar" src={userImageUrl} alt="avatar" />
-<Input label="Password" type="password" bind:value={password} on:enter={submit} autofocus icon="Key16" />
+<Input type="password" placeholder="Password" bind:value={password} on:enter={submit} autofocus icon="Key16" />
 <Button primary on:click={submit}>Login</Button>
-<Button on:click={cancel}>Cancel</Button>
+<!--<Button on:click={cancel}>Cancel</Button>-->
+<p class="cancel-auth" on:click={cancel}>Cancel</p>
 
 <style>
     img#avatar {
         max-width: 150px;
         max-height: 150px;
-        @apply rounded-full mx-auto my-2;
+        @apply rounded-full mx-auto my-2 mb-8 shadow;
+    }
+
+    .cancel-auth {
+        @apply text-center cursor-pointer mt-4;
     }
 </style>

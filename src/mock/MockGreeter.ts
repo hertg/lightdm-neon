@@ -1,14 +1,14 @@
-export {};
+export { };
 
 const PASSWORD: string = "password";
 
 enum PromptType {
     USERNAME,
-    PASSWORD       
+    PASSWORD
 };
 
 export class MockGreeter implements LightDMGreeter {
-    
+
     authentication_user: string = null;
     autologin_guest: boolean = null;
     autologin_timeout: number = 10;
@@ -101,11 +101,9 @@ export class MockGreeter implements LightDMGreeter {
             } else {
                 window.show_message("This user doesn't exist", "error");
             }
-            
-            
         }
     }
-    
+
     authenticate_as_guest(): void {
         console.debug(`authenticate_as_guest() was called!`);
         throw new Error("This method isn't mocked yet");
@@ -147,15 +145,17 @@ export class MockGreeter implements LightDMGreeter {
                 window.show_message("this user doesn't exist", "error");
             }
         } else if (this.promptedFor === PromptType.PASSWORD) {
-            let password: string = response;
-            if (password === PASSWORD) {
-                this.is_authenticated = true;
-                this.in_authentication = false;
-                window.authentication_complete();
-            } else {
-                console.error(`the entered password was wrong`);
-                window.show_message("wrong password", "error");
-            }
+            setTimeout(() => {
+                let password: string = response;
+                if (password === PASSWORD) {
+                    this.is_authenticated = true;
+                    this.in_authentication = false;
+                    window.authentication_complete();
+                } else {
+                    console.error(`the entered password was wrong`);
+                    window.show_message("wrong password", "error");
+                }
+            }, 0); // todo: use 3s timeout to simulate actual time
         }
     }
     restart(): void {
@@ -180,5 +180,5 @@ export class MockGreeter implements LightDMGreeter {
     }
 
     private promptedFor: PromptType = null;
-    
+
 }
