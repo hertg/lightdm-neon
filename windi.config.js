@@ -7,7 +7,10 @@ module.exports = {
       colors: {
         primary: '#8E2DE2',
         secondary: '#4A00E0'
+      },
+      fontFamily: {
+        'sans': ['Outfit', 'system-ui']
       }
-    }
+    },
   }
 };

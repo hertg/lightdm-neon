@@ -18,6 +18,12 @@
 	}
 </script>
 
+<svelte:head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato&family=Outfit&display=swap');
+	</style>
+</svelte:head>
+
 <div id="wrapper" style="--bg-image: url('{background}')">
 	<main>
 		<img src="{logoUrl}" alt="logo" on:click={toHome} />
@@ -28,7 +34,6 @@
 	<Notifications />
 </div>
 
-
 <style windi:preflights:global windi:safelist:global>
 	:global(html) {
 		@apply h-screen;
@@ -36,7 +41,7 @@
 
 	#wrapper {
 		/*bg-gradient-to-r from-primary to-secondary */
-		@apply h-screen flex justify-center items-center bg-cover bg-center;
+		@apply h-screen flex justify-center items-center bg-cover bg-center blur-lg;
 		background-image: var(--bg-image);
 		/*background-image: url('/images/background.jpg');*/
 	}

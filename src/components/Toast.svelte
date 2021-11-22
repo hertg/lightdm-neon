@@ -20,11 +20,7 @@
 
 <style>
     .toast {
-      background-color: white;
-      color: black;
-      border-radius: 2px;
-      padding: 12px;
-      font-size: 14px;
       border-bottom: 3px solid var(--color);
+      @apply shadow-lg bg-light-50 p-3 rounded-sm;
     }
 </style>

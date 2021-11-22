@@ -16,6 +16,6 @@
 </script>
 
 <h1>Username</h1>
-<Input bind:value={username} on:enter={submit} />
+<Input bind:value={username} on:enter={submit} icon="Person16" />
 <Button primary on:click={submit}>Login</Button>
 <Button on:click={cancel}>Cancel</Button>

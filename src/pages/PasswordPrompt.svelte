@@ -29,7 +29,7 @@
 
 
 <img id="avatar" src={userImageUrl} alt="avatar" />
-<Input label="Password" type="password" bind:value={password} on:enter={submit} autofocus />
+<Input label="Password" type="password" bind:value={password} on:enter={submit} autofocus icon="Key16" />
 <Button primary on:click={submit}>Login</Button>
 <Button on:click={cancel}>Cancel</Button>
 

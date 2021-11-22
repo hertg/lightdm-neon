@@ -8,6 +8,6 @@
 
 <style>
     .card {
-        @apply bg-light-200 text-red-800 p-6 rounded-xl shadow;
+        @apply bg-light-50 p-6 rounded-xl shadow;
     }
 </style>
