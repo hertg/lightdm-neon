@@ -13,10 +13,11 @@ export const lightDMStore = new LightDMStore();*/
 export const inAuthentication: Writable<boolean> = writable(lightdm.in_authentication);
 export const isAuthenticated: Writable<boolean> = writable(lightdm.is_authenticated);
 export const splashscreenSeen: Writable<boolean> = writable(false);
+export const selectedSession: Writable<string> = writable(lightdm.default_session);
 export const notifications: Writable<GreeterNotification[]> = writable([]);
 
 // keep in sync
-
+/*
 let inAuth = lightdm.in_authentication;
 let isAuth = lightdm.is_authenticated;
 setInterval(() => {
@@ -30,3 +31,4 @@ setInterval(() => {
         inAuth = lightdm.is_authenticated;
     }
 }, 50);
+*/

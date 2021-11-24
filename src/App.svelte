@@ -4,6 +4,7 @@
 	import Card from "./components/Card.svelte";
 	import { splashscreenSeen } from "./store/LightDMStore";
 	import Notifications from './components/Notifications.svelte';
+	import WmSelect from './pages/WMSelect.svelte';
 
 	const logoUrl: string = window.config.get_str("branding", "logo");
 	const background: string = window.config.get_str("branding", "background");
@@ -18,18 +19,13 @@
 	}
 </script>
 
-<svelte:head>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Lato&family=Outfit&display=swap');
-	</style>
-</svelte:head>
-
 <div id="wrapper" style="--bg-image: url('{background}')">
 	<main>
 		<!--<img src="{logoUrl}" alt="logo" on:click={toHome} />-->
 		<Card>
 			<Router {routes} />
 		</Card>
+		<WmSelect />
 	</main>
 	<Notifications />
 </div>

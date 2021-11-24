@@ -1,8 +1,10 @@
 import { push } from 'svelte-spa-router';
+import { get } from 'svelte/store';
 import App from './App.svelte';
 import { MockConfig } from './mock/MockConfig';
 import { MockGreeter } from './mock/MockGreeter';
 import { MockGreeterUtil } from './mock/MockGreeterUtil';
+import { selectedSession } from './store/LightDMStore';
 import { notify } from './utils/Notification';
 
 // mocks
@@ -33,8 +35,9 @@ window.show_prompt = (text: string, type: "text" | "password") => {
 
 window.authentication_complete = () => {
 	console.log("authentication_complete");
-	if (window.lightdm.is_authenticated) {
-		window.lightdm.start_session_sync(); // todo
+	if (window.lightdm.is_authenticated) {	
+		let s = get(selectedSession);
+		window.lightdm.start_session_sync(s); // todo
 	} else {
 		window.show_message("Authentication Failed", "error");
 		window.lightdm.authenticate(window.lightdm.authentication_user);
