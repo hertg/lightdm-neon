@@ -25,11 +25,15 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
    ```
 
 ## Add a user avatar
-Add your avatar to your home directory and name it `.face`.
+~~Add your avatar to your home directory and name it `.face`.~~\
+-> This doesn't work (anymore). Setting a custom image via the webkit-greeter `user_image` configuration does work however. But it will display the same image for all users.
 
 ## Dependencies
 - Rollup
 - https://github.com/ItalyPaleAle/svelte-spa-router
+
+## TODO
+- [ ] Lockscreen (dbus: `org.freedesktop.DisplayManager.Seat.Lock`)
 
 ## Resources
 - [Building a LightDM Webkit Greeter Theme](https://www.chathandriehuys.com/blog/posts/2021/01/building-a-lightdm-webkit-greeter-theme/) (chathandriehuys.com)
