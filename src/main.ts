@@ -1,4 +1,4 @@
-import { push } from 'svelte-spa-router';
+import { push, replace } from 'svelte-spa-router';
 import { get } from 'svelte/store';
 import App from './App.svelte';
 import { MockConfig } from './mock/MockConfig';
@@ -27,9 +27,9 @@ window.show_message = (msg: string, type: "error" | "info") => {
 window.show_prompt = (text: string, type: "text" | "password") => {
 	console.log(`prompt (${type}): ${text}`);
 	if (type === "password") {
-		push('/login?message=' + text);
+		replace('/login?message=' + text);
 	} else {
-		push('/user?message=' + text);
+		replace('/user?message=' + text);
 	}
 };
 

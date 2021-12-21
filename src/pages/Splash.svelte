@@ -1,20 +1,21 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { push } from 'svelte-spa-router'
+    import { push, replace } from 'svelte-spa-router'
     import { splashscreenSeen } from "../store/LightDMStore";
 
     // todo: allow disabling splash screen
     const TIMEOUT: number = 1000; // 1s
 
     onMount(async() => {
-        if ($splashscreenSeen || TIMEOUT < 1) {
-            push('/select-user');
-        } else {
-            setTimeout(() => {
-                splashscreenSeen.update(o => o = true);
-                push('/select-user');
-            }, TIMEOUT);
-        }
+        replace('/select-user');
+        //if ($splashscreenSeen || TIMEOUT < 1) {
+        //    push('/select-user');
+        //} else {
+        //    setTimeout(() => {
+        //        splashscreenSeen.update(o => o = true);
+        //        push('/select-user');
+        //    }, TIMEOUT);
+        //}
     })
 </script>
 

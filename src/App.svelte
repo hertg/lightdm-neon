@@ -1,6 +1,6 @@
 <script lang="ts">
 	import routes from './router';
-	import Router, { push } from 'svelte-spa-router'
+	import Router, { push, replace } from 'svelte-spa-router'
 	import Card from "./components/Card.svelte";
 	import { splashscreenSeen } from "./store/LightDMStore";
 	import Notifications from './components/Notifications.svelte';
@@ -12,9 +12,9 @@
 	const toHome = () => {
 		if ($splashscreenSeen) {
 			window.lightdm.cancel_authentication();
-			push("/select-user");
+			replace("/select-user");
 		} else {
-			push("/");
+			replace("/");
 		}
 	}
 </script>
@@ -24,8 +24,10 @@
 		<!--<img src="{logoUrl}" alt="logo" on:click={toHome} />-->
 		<Card>
 			<Router {routes} />
+			<div class="flex justify-end mt-4">
+				<WmSelect />
+			</div>
 		</Card>
-		<WmSelect />
 	</main>
 	<Notifications />
 </div>
