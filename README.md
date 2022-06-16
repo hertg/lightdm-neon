@@ -22,6 +22,8 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
 1. Run the greeter from your desktop
    ```sh
    lightdm-webkit2-greeter
+   # or
+   nody-greeter --debug
    ```
 
 ## Add a user avatar
@@ -40,6 +42,7 @@ To debug the project locally and test it with the actual lightdm-webkit2-greeter
 - [lightdm-webkit-theme](https://github.com/cdriehuys/lightdm-webkit-theme) (github.com)
 - [lightdm-webkit2-greeter](https://github.com/antergos/web-greeter) (github.com)
 - [lightdm-webkit2-theme-reactive](https://github.com/gitneeraj/lightdm-webkit2-theme-reactive) (github.com)
+- [nody-greeter](https://github.com/JezerM/nody-greeter)
 
 ## Attribution
 - Example Avatars from [boringavatars.com](https://boringavatars.com/)

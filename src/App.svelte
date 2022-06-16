@@ -6,8 +6,8 @@
 	import Notifications from './components/Notifications.svelte';
 	import WmSelect from './pages/WMSelect.svelte';
 
-	const logoUrl: string = window.config.get_str("branding", "logo");
-	const background: string = window.config.get_str("branding", "background");
+	const logoUrl: string = window.greeter_config.branding.logo;
+	const background: string = window.greeter_config.branding.background;
 
 	const toHome = () => {
 		if ($splashscreenSeen) {

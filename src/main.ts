@@ -1,9 +1,9 @@
-import { push, replace } from 'svelte-spa-router';
+import { replace } from 'svelte-spa-router';
 import { get } from 'svelte/store';
 import App from './App.svelte';
 import { MockConfig } from './mock/MockConfig';
 import { MockGreeter } from './mock/MockGreeter';
-import { MockGreeterUtil } from './mock/MockGreeterUtil';
+import { MockThemeUtils } from './mock/MockThemeUtils';
 import { selectedSession } from './store/LightDMStore';
 import { notify } from './utils/Notification';
 
@@ -11,11 +11,11 @@ import { notify } from './utils/Notification';
 if (!window.lightdm) {
 	window.lightdm = new MockGreeter();
 }
-if (!window.greeterutil) {
-	window.greeterutil = new MockGreeterUtil();
+if (!window.theme_utils) {
+	window.theme_utils = new MockThemeUtils();
 }
-if (!window.config) {
-	window.config = new MockConfig();
+if (!window.greeter_config) {
+	window.greeter_config = new MockConfig();
 }
 
 // methods the theme must provide
@@ -37,7 +37,7 @@ window.authentication_complete = () => {
 	console.log("authentication_complete");
 	if (window.lightdm.is_authenticated) {	
 		let s = get(selectedSession);
-		window.lightdm.start_session_sync(s); // todo
+		window.lightdm.start_session(s); // todo
 	} else {
 		window.show_message("Authentication Failed", "error");
 		window.lightdm.authenticate(window.lightdm.authentication_user);
@@ -48,6 +48,18 @@ window.autologin_timer_expired = () => {
 	console.log("autologin_timer_expired");
 	// todo
 };
+
+async function initGreeter(): Promise<void> {
+	if (window.greeter_config?.greeter.debug_mode) {
+
+	}
+
+	
+}
+
+window.addEventListener("GreeterReady", () => {
+
+})
 
 const app = new App({
 	target: document.body,

@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { push } from "svelte-spa-router";
     import Button from "../components/Button.svelte";
 
     let select = (username: string) => {
+        console.log("selected");
         window.lightdm.authenticate(username);
     };
 
