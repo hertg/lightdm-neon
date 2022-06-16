@@ -1,13 +1,20 @@
 <script lang="ts">
+import { lightdm } from "nody-greeter-types";
+
     import Button from "../components/Button.svelte";
 
     let select = (username: string) => {
-        console.log("selected");
-        window.lightdm.authenticate(username);
+        console.log(`selected ${username}`);
+        console.log(window.lightdm);
+        let s = window.lightdm?.authenticate(username);
+        console.log(s);
+
+        //if (s) lightdm.respond(username)
     };
 
     let other = () => {
-        window.lightdm.authenticate();
+        console.log(`select user`);
+        window.lightdm?.authenticate(null);
     }
 </script>
 

@@ -3,6 +3,7 @@
     import { push } from "svelte-spa-router";
     import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
+    import { validating } from "../store/LightDMStore";
 
     const user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
     const defaultAvatar: string = window.greeter_config.branding.user_image;

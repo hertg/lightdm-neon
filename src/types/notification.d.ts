@@ -1,4 +1,4 @@
 interface GreeterNotification {
     text: string;
-    type: string;
+    type: number;
 }

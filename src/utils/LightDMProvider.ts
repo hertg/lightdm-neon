@@ -1,11 +1,6 @@
-import type { Greeter, GreeterConfig, ThemeUtils } from "nody-greeter-types";
-import { MockGreeter } from "../mock/MockGreeter";
-import { MockThemeUtils } from "../mock/MockThemeUtils";
+import type { Greeter as GreeterClass, GreeterConfig as ConfigClass, ThemeUtils as UtilsClass } from "nody-greeter-types";
+import { Greeter, GreeterConfig, ThemeUtils } from "./Mock";
 
-/*export const lightdm: Greeter = window.lightdm || new MockGreeter();
-export const config: GreeterConfig = window.config || new MockConfig();
-export const greeterutil: ThemeUtils = window.greeterutil || new MockGreeterUtil();*/
-
-export const lightdm: Greeter = window.lightdm || new MockGreeter();
-export const config: GreeterConfig = window.greeter_config;
-export const greeterutil: ThemeUtils = window.theme_utils || new MockThemeUtils;
+export const lightdm: GreeterClass = window.lightdm || new Greeter();
+export const config: ConfigClass = window.greeter_config || new GreeterConfig();
+export const greeterutil: UtilsClass = window.theme_utils || new ThemeUtils();
