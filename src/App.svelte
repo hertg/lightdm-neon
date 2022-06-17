@@ -8,7 +8,7 @@
 
 	const logoUrl: string = window.greeter_config.branding.logo;
 	//const background: string = window.greeter_config.branding.background;
-	const background: string = "none";
+	const background: string = "/images/background.jpg";
 
 	const toHome = () => {
 		if ($splashscreenSeen) {
@@ -22,7 +22,7 @@
 
 <div id="wrapper" style="--bg-image: url('{background}')">
 	<main>
-		<img src={logoUrl} alt="logo" on:click={toHome} />
+		<!--<img src={logoUrl} alt="logo" on:click={toHome} />-->
 		<Card>
 			<Router {routes} />
 			<div class="flex justify-end mt-4">
@@ -40,7 +40,7 @@
 
 	#wrapper {
 		/*bg-gradient-to-r from-primary to-secondary */
-		@apply h-screen flex justify-center items-center bg-cover bg-center blur-lg;
+		@apply h-screen flex justify-center items-center bg-cover bg-center;
 		background-image: var(--bg-image);
 		/*background-image: url('/images/background.jpg');*/
 	}
@@ -48,7 +48,7 @@
 	main {
 		width: 100%;
 		max-width: 420px;
-		@apply flex flex-col;
+		@apply flex flex-col backdrop-blur-sm;
 	}
 
 	img {
