@@ -4,6 +4,7 @@
   "compilerOptions": {
     "typeRoots": [
       "./node_modules/lightdm-webkit2-typescript",
+      "./node_modules/nody-greeter-types",
       "./src/types"
     ]
   },

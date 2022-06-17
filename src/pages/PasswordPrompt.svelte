@@ -1,11 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { push, link } from "svelte-spa-router";
+    import { push } from "svelte-spa-router";
     import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
+    import { validating } from "../store/LightDMStore";
 
     const user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
-    const defaultAvatar: string = window.config.get_str("branding", "user_image");
+    const defaultAvatar: string = window.greeter_config.branding.user_image;
     const userImageUrl: string = user && user.image !== null ? user.image : defaultAvatar;
     
     let password: string = "";
