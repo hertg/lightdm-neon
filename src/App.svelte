@@ -5,10 +5,12 @@
 	import { splashscreenSeen } from "./store/LightDMStore";
 	import Notifications from "./components/Notifications.svelte";
 	import WmSelect from "./pages/WMSelect.svelte";
+import { asset } from "./utils/Assets";
 
 	const logoUrl: string = window.greeter_config.branding.logo;
 	//const background: string = window.greeter_config.branding.background;
-	const background: string = "/images/background.jpg";
+	//const background: string = "/images/background.jpg";
+	const background: string = asset("./images/background.jpg");
 
 	const toHome = () => {
 		if ($splashscreenSeen) {
@@ -48,7 +50,7 @@
 	main {
 		width: 100%;
 		max-width: 420px;
-		@apply flex flex-col backdrop-blur-sm;
+		@apply flex flex-col;
 	}
 
 	img {

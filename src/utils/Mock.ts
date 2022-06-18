@@ -98,6 +98,7 @@ export class Signal implements SignalClass {
 }
 
 export class Greeter implements GreeterClass {
+    is_mock = true;
     mock_password = "mock";
 
     authentication_complete = new Signal("authentication_complete");
@@ -294,8 +295,8 @@ export class Greeter implements GreeterClass {
 export class GreeterConfig implements GreeterConfigClass {
     branding = {
         background_images_dir: "/usr/share/backgrounds",
-        logo: "/usr/share/web-greeter/themes/default/img/antergos-logo-user.png",
-        user_image: "/usr/share/web-greeter/themes/default/img/antergos.png",
+        logo: "file:///usr/share/web-greeter/themes/svelte/images/logo.png",
+        user_image: "file:///usr/share/web-greeter/themes/svelte/images/avatar.png",
     };
 
     greeter = {
@@ -419,6 +420,7 @@ if (window._ready_event == undefined) {
     window.greeter_config = new GreeterConfig();
     window.theme_utils = new ThemeUtils();
     window._ready_event = new Event("GreeterReady");
+    window.is_mocked = true;
     window.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             if (window._ready_event) window.dispatchEvent(window._ready_event);

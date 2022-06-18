@@ -4,6 +4,6 @@
  * 
  * These methods must be implemented by the theme.
  */
-interface Window {    
-    
-  }
+interface Window {
+  is_mocked: boolean;
+}

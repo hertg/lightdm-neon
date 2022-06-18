@@ -8,6 +8,6 @@
 
 <style>
     .card {
-        @apply bg-light-50 p-6 rounded-xl shadow;
+        @apply bg-light-50 p-6 rounded-sm shadow backdrop-blur-sm;
     }
 </style>

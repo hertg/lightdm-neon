@@ -9,7 +9,7 @@ module.exports = {
         secondary: '#4A00E0'
       },
       fontFamily: {
-        'sans': ['Outfit', 'system-ui']
+        //'sans': ['Outfit', 'system-ui']
       }
     },
   }
