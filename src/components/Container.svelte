@@ -8,6 +8,6 @@
 
 <style>
     .card {
-        @apply bg-light-50 p-6 rounded-md shadow-md;
+        @apply bg-gray-100/90 p-6 rounded-md shadow-md w-md overflow-hidden;
     }
 </style>

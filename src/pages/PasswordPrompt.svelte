@@ -3,9 +3,10 @@
     import { push } from "svelte-spa-router";
     import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
+import UserImage from "../components/UserImage.svelte";
     import { validating } from "../store/LightDMStore";
 
-    const user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
+    let user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
     const defaultAvatar: string = window.greeter_config.branding.user_image;
     const userImageUrl: string = user && user.image !== null && user.image !== "" ? user.image : defaultAvatar;
     
@@ -29,7 +30,8 @@
 </script>
 
 
-<img id="avatar" src={userImageUrl} alt="avatar" />
+<UserImage bind:user />
+<!--<img id="avatar" src={userImageUrl} alt="avatar" />-->
 <p id="name">{user.display_name}</p>
 <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} autofocus icon="Key16" />
 <Button primary on:click={submit}>Login</Button>

@@ -1,34 +1,39 @@
 <script lang="ts">
-    export let name: string;
-    export let image: string;
+    import type { LightDMUser } from "nody-greeter-types";
+    import UserImage from "./UserImage.svelte";
 
-    console.log(image)
-    console.log(window.greeter_config.branding.user_image);
-    $: img = image !== null && image !== undefined && image !== "" ? image : window.greeter_config.branding.user_image;
+    export let user: LightDMUser;
 </script>
 
-<div class="user-option">
-    <img src={img} alt="profile picture of {name}" />
+<div class="user-option" on:click>
+    <div class="picture">
+        <UserImage bind:user />
+    </div>
     <div class="text">
-        <span>{name}</span>
+        <span>{user.display_name}</span>
+        <span class="weak">Some text</span>
     </div>
 </div>
 
 <style>
     .user-option {
-        @apply flex overflow-hidden bg-white items-center;
+        @apply flex overflow-hidden cursor-pointer select-none bg-white items-center gap-4 rounded-xl p-2 transition duration-200 hover:shadow-lg;
+    }
+
+    .picture {
+        @apply rounded-full h-12 w-12 bg-gradient-to-tl from-purple-500 to-pink-400;
     }
 
     img {
-        @apply rounded-full;
-    }
-
-    .text {
-
+        @apply w-full h-full;        
     }
 
     .text span {
+        @apply block leading-tight;
+    }
 
+    .text span.weak {
+        @apply text-gray-600 text-sm;
     }
 </style>
 

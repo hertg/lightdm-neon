@@ -24,6 +24,7 @@
 		<Container>
 			<Router {routes} />
 		</Container>
+		<WmSelect />
 		<!--<Card>
 			<span class="font-bold text-2xl">
 				Hello<br>
@@ -62,7 +63,7 @@
 
 	#wrapper {
 		/*bg-gradient-to-r from-primary to-secondary */
-		@apply absolute flex h-screen w-screen justify-center items-center bg-gray-700/40;
+		@apply absolute flex flex-col h-screen w-screen justify-center items-center bg-gray-700/40;
 	}
 
 	.blurred {

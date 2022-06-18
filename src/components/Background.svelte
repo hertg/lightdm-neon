@@ -1,6 +1,6 @@
 <script lang="ts">
     import { themeSettings } from "../store/settings";
-    let defaultImage: string = "assets/img/backgrounds/canyon.jpg";
+    let defaultImage: string = "assets/img/backgrounds/supermarket.jpg";
     $: image = $themeSettings.background_image !== null ? $themeSettings.background_image : defaultImage;
 </script>
 

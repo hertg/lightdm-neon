@@ -1,6 +1,7 @@
 <script lang="ts">
-    import Button from "../components/Button.svelte";
     import UserOption from "../components/UserOption.svelte";
+    import { slide, fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
     let select = (username: string) => {
         console.log(`selected ${username}`);
@@ -17,16 +18,19 @@
     }
 </script>
 
-
-{#each window.lightdm.users as user}
-    <UserOption name={user.display_name} image={user.image} />
-    <Button on:click={() => select(user.username)}>{user.display_name}</Button>
-{/each}
+<div id="user-list" >
+    {#each window.lightdm.users as user}
+        <UserOption bind:user on:click={() => select(user.username)} />
+    {/each}
+</div>
 
 <!-- login with a user that isn't listed here -->
 <!--<p id="other-user" on:click={other}>Other</p>-->
 
 <style>
+    #user-list {
+        @apply flex flex-col gap-2;
+    }
     /*#other-user {
         @apply text-center cursor-pointer mt-4;
     }*/
