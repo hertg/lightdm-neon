@@ -1,6 +1,6 @@
 [theme]
-name=flat
-description=A flat lightdm webkit2 theme
+name=starter
+description=A lightdm starter theme
 engine=lightdm-webkit2-greeter
 url=index.html
 session=leftwm

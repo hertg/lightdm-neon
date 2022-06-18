@@ -1,16 +1,12 @@
 <script lang="ts">
 	import routes from "./router";
 	import Router, { replace } from "svelte-spa-router";
-	import Card from "./components/Card.svelte";
+	import Container from "./components/Container.svelte";
 	import { splashscreenSeen } from "./store/LightDMStore";
 	import Notifications from "./components/Notifications.svelte";
 	import WmSelect from "./pages/WMSelect.svelte";
-import { asset } from "./utils/Assets";
-
-	const logoUrl: string = window.greeter_config.branding.logo;
-	//const background: string = window.greeter_config.branding.background;
-	//const background: string = "/images/background.jpg";
-	const background: string = asset("./images/background.jpg");
+	import Background from "./components/Background.svelte";
+	import { themeSettings } from "./store/settings";
 
 	const toHome = () => {
 		if ($splashscreenSeen) {
@@ -22,9 +18,25 @@ import { asset } from "./utils/Assets";
 	};
 </script>
 
-<div id="wrapper" style="--bg-image: url('{background}')">
+<div id="app" style="--accent-color: {$themeSettings.colors.accent_color}">
+	<Background />
+	<div id="wrapper" class="blurred">
+		<Container>
+			<Router {routes} />
+		</Container>
+		<!--<Card>
+			<span class="font-bold text-2xl">
+				Hello<br>
+				World
+			  </span>
+			<h1 class="accent">junge</h1>
+		</Card>-->
+	</div>
+</div>
+
+<!--<div id="wrapper" style="--bg-image: url('{background}')">
 	<main>
-		<!--<img src={logoUrl} alt="logo" on:click={toHome} />-->
+		<!--<img src={logoUrl} alt="logo" on:click={toHome} />--
 		<Card>
 			<Router {routes} />
 			<div class="flex justify-end mt-4">
@@ -33,18 +45,28 @@ import { asset } from "./utils/Assets";
 		</Card>
 	</main>
 	<Notifications />
-</div>
+</div>-->
 
 <style windi:preflights:global windi:safelist:global>
 	:global(html) {
 		@apply h-screen font-sans;
 	}
 
+	:global(.accent) {
+		color: var(--accent-color);
+	}
+
+	#app {
+		@apply h-screen;
+	}
+
 	#wrapper {
 		/*bg-gradient-to-r from-primary to-secondary */
-		@apply h-screen flex justify-center items-center bg-cover bg-center;
-		background-image: var(--bg-image);
-		/*background-image: url('/images/background.jpg');*/
+		@apply absolute flex h-screen w-screen justify-center items-center bg-gray-700/40;
+	}
+
+	.blurred {
+		@apply backdrop-filter backdrop-blur-md;
 	}
 
 	main {

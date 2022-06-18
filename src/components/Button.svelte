@@ -9,6 +9,7 @@
 <style>
     button {
         @apply bg-gray-700 text-white p-3 py-2 rounded-md shadow-sm w-full my-1 focus:ring-4;
+        background-color: var(--accent-color);
     }
 
     button.primary {

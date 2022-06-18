@@ -10,6 +10,9 @@ module.exports = {
       },
       fontFamily: {
         //'sans': ['Outfit', 'system-ui']
+      },
+      blur: {
+        xs: '2px',
       }
     },
   }

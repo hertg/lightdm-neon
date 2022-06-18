@@ -195,7 +195,7 @@ export class Greeter implements GreeterClass {
     show_manual_login_hint = true;
     show_remote_login_hint = false;
     users = [
-        new LightDMUser("superman", "Clark Kent", "", "ubuntu"),
+        new LightDMUser("superman", "Clark Kent", "assets/img/avatar.png", "ubuntu"),
         new LightDMUser("batman", "Bruce Wayne", "", "cinnamon"),
         new LightDMUser("spiderman", "Peter Parker", "", "awesome"),
     ];
@@ -296,7 +296,7 @@ export class GreeterConfig implements GreeterConfigClass {
     branding = {
         background_images_dir: "/usr/share/backgrounds",
         logo: "file:///usr/share/web-greeter/themes/svelte/images/logo.png",
-        user_image: "file:///usr/share/web-greeter/themes/svelte/images/avatar.png",
+        user_image: "assets/img/avatar.png",
     };
 
     greeter = {
@@ -415,7 +415,7 @@ export class ThemeUtils implements ThemeUtilsClass {
 }
 
 if (window._ready_event == undefined) {
-    console.log("lightdm not found, api will be mocked");
+    console.debug("lightdm not found, api will be mocked");
     window.lightdm = new Greeter();
     window.greeter_config = new GreeterConfig();
     window.theme_utils = new ThemeUtils();

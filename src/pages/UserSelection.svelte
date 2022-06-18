@@ -1,7 +1,6 @@
 <script lang="ts">
-import { lightdm } from "nody-greeter-types";
-
     import Button from "../components/Button.svelte";
+    import UserOption from "../components/UserOption.svelte";
 
     let select = (username: string) => {
         console.log(`selected ${username}`);
@@ -20,15 +19,15 @@ import { lightdm } from "nody-greeter-types";
 
 
 {#each window.lightdm.users as user}
+    <UserOption name={user.display_name} image={user.image} />
     <Button on:click={() => select(user.username)}>{user.display_name}</Button>
 {/each}
 
 <!-- login with a user that isn't listed here -->
-<p id="other-user" on:click={other}>Other</p>
-<!--<Button on:click={other}>Other</Button>-->
+<!--<p id="other-user" on:click={other}>Other</p>-->
 
 <style>
-    #other-user {
+    /*#other-user {
         @apply text-center cursor-pointer mt-4;
-    }
+    }*/
 </style>
