@@ -46,19 +46,6 @@ import Menu from "./components/Menu.svelte";
 	</div>
 </div>
 
-<!--<div id="wrapper" style="--bg-image: url('{background}')">
-	<main>
-		<!--<img src={logoUrl} alt="logo" on:click={toHome} />--
-		<Card>
-			<Router {routes} />
-			<div class="flex justify-end mt-4">
-				<WmSelect />
-			</div>
-		</Card>
-	</main>
-	<Notifications />
-</div>-->
-
 <style windi:preflights:global windi:safelist:global>
 	:global(html) {
 		@apply h-screen font-sans;
@@ -81,16 +68,5 @@ import Menu from "./components/Menu.svelte";
 
 	#wrapper.blurred {
 		backdrop-filter: blur(8px) opacity(1);
-	}
-
-	main {
-		width: 100%;
-		max-width: 420px;
-		@apply flex flex-col;
-	}
-
-	img {
-		@apply text-center;
-		cursor: pointer;
 	}
 </style>

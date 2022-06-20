@@ -24,12 +24,4 @@
     .container {
         @apply w-screen h-screen flex items-center justify-center text-light-50 gap-8 fill-white;
     }
-
-    button {
-        @apply px-2 py-1 cursor-pointer items-center select-none transition;
-    }
-
-    button:hover {
-        background-color: var(--accent-color);
-    }
 </style>

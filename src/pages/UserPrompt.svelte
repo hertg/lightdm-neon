@@ -3,6 +3,7 @@
 
     import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
+    import Menu from "../components/Menu.svelte";
 
     let username: string = "";
     const submit = () => {
