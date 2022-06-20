@@ -2,6 +2,7 @@
     import UserOption from "../components/UserOption.svelte";
     import { slide, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
+import Menu from "../components/Menu.svelte";
 
     let select = (username: string) => {
         console.log(`selected ${username}`);
@@ -18,6 +19,7 @@
     }
 </script>
 
+<Menu />
 <div id="user-list" >
     {#each window.lightdm.users as user}
         <UserOption bind:user on:click={() => select(user.username)} />
@@ -29,7 +31,7 @@
 
 <style>
     #user-list {
-        @apply flex flex-col gap-2;
+        @apply flex w-sm gap-8;
     }
     /*#other-user {
         @apply text-center cursor-pointer mt-4;

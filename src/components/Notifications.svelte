@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fly } from 'svelte/transition';
+    import { notifications } from '../store/runtime';
     import Toast from "./Toast.svelte";
-    import { notifications } from "../store/LightDMStore";
 </script>
 
 <div id="notifications">

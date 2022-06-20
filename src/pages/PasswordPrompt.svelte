@@ -1,14 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { push } from "svelte-spa-router";
-    import Button from "../components/Button.svelte";
-    import Input from "../components/Input.svelte";
-import UserImage from "../components/UserImage.svelte";
-    import { validating } from "../store/LightDMStore";
+    import Menu from "../components/Menu.svelte";
+    import PasswordInput from "../components/PasswordInput.svelte";
+    import UserImage from "../components/UserImage.svelte";
 
     let user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
-    const defaultAvatar: string = window.greeter_config.branding.user_image;
-    const userImageUrl: string = user && user.image !== null && user.image !== "" ? user.image : defaultAvatar;
     
     let password: string = "";
 
@@ -29,27 +26,26 @@ import UserImage from "../components/UserImage.svelte";
     };
 </script>
 
-
-<UserImage bind:user />
-<!--<img id="avatar" src={userImageUrl} alt="avatar" />-->
-<p id="name">{user.display_name}</p>
-<Input type="password" placeholder="Password" bind:value={password} on:enter={submit} autofocus icon="Key16" />
-<Button primary on:click={submit}>Login</Button>
-<!--<Button on:click={cancel}>Cancel</Button>-->
-<p class="cancel-auth" on:click={cancel}>Cancel</p>
+<Menu />
+<div id="pw-prompt">
+    <UserImage bind:user />
+    <p id="name">{user.display_name}</p>
+    <PasswordInput bind:password icon="Key16" on:enter={submit} />
+    <!--<Input type="password" placeholder="Password" bind:value={password} on:enter={submit} autofocus icon="Key16" />-->
+    <!--<Button primary on:click={submit}>Login</Button>-->
+    <p class="cancel-auth" on:click={cancel}>change user</p>
+</div>
 
 <style>
-    img#avatar {
-        max-width: 150px;
-        max-height: 150px;
-        @apply rounded-full mx-auto my-2 mb-8 shadow;
+    #pw-prompt {
+        @apply w-72 flex flex-col items-center gap-4;
     }
 
     p#name {
-        @apply text-center underline decoration-pink-500 decoration-4 text-2xl font-bold;
+        @apply text-center text-2xl text-light-100;
     }
 
     .cancel-auth {
-        @apply text-center cursor-pointer mt-4;
+        @apply text-center cursor-pointer text-white text-sm;
     }
 </style>

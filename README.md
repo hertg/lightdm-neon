@@ -27,10 +27,6 @@ To debug the project locally and test it with the actual lightdm-greeter do the 
    nody-greeter --debug
    ```
 
-## Add a user avatar
-Put the image file in `/var/lib/AccountsService/icons/{username}` and make sure it's owned by root with `644` permissions,
-see [comment here](https://github.com/JezerM/web-greeter/issues/39#issuecomment-1094339419).
-
 ## TODO
 - [ ] Lockscreen (dbus: `org.freedesktop.DisplayManager.Seat.Lock`)
 

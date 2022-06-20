@@ -6,18 +6,13 @@
 </script>
 
 <div class="user-option" on:click>
-    <div class="picture">
-        <UserImage bind:user />
-    </div>
-    <div class="text">
-        <span>{user.display_name}</span>
-        <span class="weak">Some text</span>
-    </div>
+    <UserImage bind:user />
+    <span class="text">{user.display_name}</span>
 </div>
 
 <style>
     .user-option {
-        @apply flex overflow-hidden cursor-pointer select-none bg-white items-center gap-4 rounded-xl p-2 transition duration-200 hover:shadow-lg;
+        @apply flex flex-col overflow-hidden cursor-pointer select-none items-center gap-4 p-2 text-white transform transition hover:scale-110;
     }
 
     .picture {
@@ -25,15 +20,11 @@
     }
 
     img {
-        @apply w-full h-full;        
+        @apply w-full h-full shadow-md;
     }
 
-    .text span {
-        @apply block leading-tight;
-    }
-
-    .text span.weak {
-        @apply text-gray-600 text-sm;
+    .text {
+        @apply text-center;
     }
 </style>
 

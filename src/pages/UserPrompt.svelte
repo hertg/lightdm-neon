@@ -15,6 +15,7 @@
     };
 </script>
 
+<Menu />
 <Input bind:value={username} on:enter={submit} icon="Person16" placeholder="Username" />
 <Button primary on:click={submit}>Login</Button>
 <Button on:click={cancel}>Cancel</Button>

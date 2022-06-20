@@ -25,7 +25,7 @@
 
 <style>
     .picture {
-        @apply rounded-full h-12 w-12 bg-gradient-to-tl from-purple-500 to-pink-400;
+        @apply rounded-full bg-gradient-to-tl from-purple-500 to-pink-400 w-max-92px h-max-92px;
     }
 
     img {

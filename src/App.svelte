@@ -2,36 +2,47 @@
 	import routes from "./router";
 	import Router, { replace } from "svelte-spa-router";
 	import Container from "./components/Container.svelte";
-	import { splashscreenSeen } from "./store/LightDMStore";
 	import Notifications from "./components/Notifications.svelte";
 	import WmSelect from "./pages/WMSelect.svelte";
 	import Background from "./components/Background.svelte";
 	import { themeSettings } from "./store/settings";
+import Icon from "./components/Icon.svelte";
+import Menu from "./components/Menu.svelte";
 
-	const toHome = () => {
-		if ($splashscreenSeen) {
-			window.lightdm.cancel_authentication();
-			replace("/select-user");
-		} else {
-			replace("/");
-		}
-	};
+	let blurred: boolean = false;
+	setTimeout(() => {
+		blurred = true;
+	}, 20);
+
 </script>
 
 <div id="app" style="--accent-color: {$themeSettings.colors.accent_color}">
 	<Background />
-	<div id="wrapper" class="blurred">
-		<Container>
-			<Router {routes} />
-		</Container>
-		<WmSelect />
-		<!--<Card>
-			<span class="font-bold text-2xl">
-				Hello<br>
-				World
-			  </span>
-			<h1 class="accent">junge</h1>
-		</Card>-->
+	<div id="wrapper" class:blurred>
+		
+		<Router {routes} />
+		
+		<!--<Icon icon="Heart24" />
+		<Icon icon="Pulse24" />
+		<Icon icon="Person24" />
+
+		<Icon icon="Gear24" />
+		<Icon icon="Stack24" />
+		<Icon icon="ArrowSwitch24" />
+		<Icon icon="Browser24" />
+		<Icon icon="Calendar24" />
+		<Icon icon="Clock24" />
+		<Icon icon="Code24" />
+
+		<Icon icon="Moon24" />
+		<Icon icon="Columns24" />
+		<Icon icon="Plug24" />
+		<Icon icon="Sync24" />
+		<Icon icon="Copy24" />
+		
+		<Icon icon="FileMedia24" /> 
+		<Icon icon="Globe24" />
+		<Icon icon="Package24" />-->
 	</div>
 </div>
 
@@ -64,10 +75,12 @@
 	#wrapper {
 		/*bg-gradient-to-r from-primary to-secondary */
 		@apply absolute flex flex-col h-screen w-screen justify-center items-center bg-gray-700/40;
+		backdrop-filter: blur(4px) opacity(0);
+		transition: backdrop-filter .75s;
 	}
 
-	.blurred {
-		@apply backdrop-filter backdrop-blur-md;
+	#wrapper.blurred {
+		backdrop-filter: blur(8px) opacity(1);
 	}
 
 	main {
