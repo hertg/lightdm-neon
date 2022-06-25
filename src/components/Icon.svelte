@@ -1,9 +1,6 @@
 <script lang="ts">
     import * as Octicons from "svelte-octicons";
-    import { draw } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
-
-    export let icon: string = "";
+    export let icon: string;
 </script>
 
 <div class="icon-container">

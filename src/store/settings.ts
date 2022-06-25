@@ -12,10 +12,12 @@ export enum SignFont {
 
 export class ThemeSettings {
     background_image: string;
+    skip_splashscreen: boolean;
     sign: {
         text: string;
         font: SignFont;
         flicker: boolean;
+        show_clock: boolean;
     }
     colors: {
         accent_color: string;
@@ -24,10 +26,12 @@ export class ThemeSettings {
 
 const initialSettings: ThemeSettings = {
     background_image: null,
+    skip_splashscreen: false,
     sign: {
         text: "hello neon",
         font: SignFont.Neonderthaw,
-        flicker: false
+        flicker: false,
+        show_clock: false,
     },
     colors: {
         accent_color: '#f71111'

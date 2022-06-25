@@ -2,12 +2,14 @@
     import Icon from './Icon.svelte';
 
     export let icon: string;
-    export let text: string;
+    export let text: string = null;
 </script>
 
 <div class="menu-button" on:click>
     <Icon {icon} />
-    <span>{text}</span>
+    {#if text}
+        <span>{text}</span>
+    {/if}
 </div>
 
 <style>

@@ -24,16 +24,9 @@ function initGreeter() {
 		console.log(files);
 	});*/
 
-	let default_user: LightDMUser = null;
-	if (window.lightdm.users.length === 1) {
-		default_user = window.lightdm.users[0];
-	}
-
 	let default_session: string = window.lightdm.default_session;
 	if (!default_session) {
-		if (default_user != null && default_user.session) {
-			default_session = default_user.session;
-		} else if (window.lightdm.sessions.length > 0) {
+		if (window.lightdm.sessions.length > 0) {
 			default_session = window.lightdm.sessions[0].key;
 		} else {
 			console.warn("no session found to choose from?");
@@ -42,10 +35,6 @@ function initGreeter() {
 
 	console.debug(`default_session is '${default_session}'`);
 	selectedSession.update(_ => default_session);
-
-	if (default_user != null) {
-		window.lightdm.authenticate(default_user.username)
-	}	
 };
   
 window.addEventListener("GreeterReady", initGreeter);

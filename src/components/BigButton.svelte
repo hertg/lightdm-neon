@@ -16,7 +16,7 @@
     }
 
     .menu-button:hover {
-        @apply transform scale-110;
+        @apply transform scale-105;
     }
 
     span {

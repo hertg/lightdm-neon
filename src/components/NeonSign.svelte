@@ -1,5 +1,7 @@
 <script lang="ts">
     import { blend } from "../utils/color";
+    import { slide, fly, fade } from 'svelte/transition';
+	import { quadOut } from 'svelte/easing';
 
     export let text: string;
     export let flicker: boolean = false;
@@ -9,7 +11,9 @@
     $: mixed = blend(color, '#ffffff', 0.75)
 </script>
 
-<span class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}">
+<span 
+    in:fly="{{y: 60, duration: 600, opacity: 0, easing: quadOut}}"
+    class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}">
     {text}
 </span>
 
@@ -37,6 +41,7 @@
 	}
 
 	span {
+        user-select: none;
 		font-family: var(--sign-font);
 		font-size: 8rem;
 		font-weight: normal;

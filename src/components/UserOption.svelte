@@ -12,7 +12,7 @@
 
 <style>
     .user-option {
-        @apply flex flex-col overflow-hidden cursor-pointer select-none items-center gap-4 p-2 text-white transform transition hover:scale-110;
+        @apply flex flex-col overflow-hidden cursor-pointer select-none items-center gap-4 p-2 text-white transform transition hover:scale-105;
     }
 
     .text {

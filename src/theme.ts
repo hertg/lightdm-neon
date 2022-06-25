@@ -1,4 +1,4 @@
-import { replace } from "svelte-spa-router";
+import { replace, push } from "svelte-spa-router";
 import { notify } from "./utils/Notification";
 
 export abstract class Theme {
@@ -15,6 +15,6 @@ export class MyTheme implements Theme {
         replace('/user?message=' + message);
     }
     on_password_prompt(message: string): void {
-        replace('/login?message=' + message);
+        push('/login?message=' + message);
     }
 }

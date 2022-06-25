@@ -1,24 +1,28 @@
 <script lang="ts">
     import BigButton from "../components/BigButton.svelte";
+import FadeInWrapper from "../components/FadeInWrapper.svelte";
 </script>
 
-<div class="container">
-    {#if window.lightdm.can_hibernate}
-        <BigButton icon="Moon24" text="Hibernate" on:click={window.lightdm.hibernate} />
-    {/if}
+<FadeInWrapper>
+    <div class="container">
+        {#if window.lightdm.can_hibernate}
+            <BigButton icon="Moon24" text="Hibernate" on:click={window.lightdm.hibernate} />
+        {/if}
+    
+        {#if window.lightdm.can_suspend}
+            <BigButton icon="NoEntry24" text="Suspend" on:click={window.lightdm.suspend} />
+        {/if}
+    
+        {#if window.lightdm.can_restart}
+            <BigButton icon="Sync24" text="Restart" on:click={window.lightdm.restart} />
+        {/if}
+    
+        {#if window.lightdm.can_shutdown}
+            <BigButton icon="Plug24" text="Shutdown" on:click={window.lightdm.shutdown} />
+        {/if}
+    </div>
+</FadeInWrapper>
 
-    {#if window.lightdm.can_suspend}
-        <BigButton icon="NoEntry24" text="Suspend" on:click={window.lightdm.suspend} />
-    {/if}
-
-    {#if window.lightdm.can_restart}
-        <BigButton icon="Sync24" text="Restart" on:click={window.lightdm.restart} />
-    {/if}
-
-    {#if window.lightdm.can_shutdown}
-        <BigButton icon="Plug24" text="Shutdown" on:click={window.lightdm.shutdown} />
-    {/if}
-</div>
 
 <style>
     .container {

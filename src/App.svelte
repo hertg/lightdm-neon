@@ -3,20 +3,13 @@
 	import Router from "svelte-spa-router";
 	import Background from "./components/Background.svelte";
 	import { themeSettings } from "./store/settings";
-	import NeonSign from "./components/NeonSign.svelte";
-
-	let blurred: boolean = false;
-	setTimeout(() => {
-		blurred = true;
-	}, 20);
+	import { backgroundBlur } from "./store/runtime";
 
 </script>
 
 <div id="app" style="--accent-color: {$themeSettings.colors.accent_color}">
 	<Background />
-	<div id="wrapper" class:blurred>
-		<!--<input type="color" bind:value={$themeSettings.colors.accent_color} />-->
-		<NeonSign font={$themeSettings.sign.font} text={$themeSettings.sign.text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} />
+	<div id="wrapper" class:blurred={$backgroundBlur}>
 		<Router {routes} />
 	</div>
 </div>

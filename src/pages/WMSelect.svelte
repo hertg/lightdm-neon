@@ -1,27 +1,23 @@
 <script lang="ts">
     import { pop } from "svelte-spa-router";
+import FadeInWrapper from "../components/FadeInWrapper.svelte";
 
-    import { selectedSession } from "../store/runtime";
+    import { selectedSession, sessionTouched } from "../store/runtime";
 
     const choose = (key: string) => {
         $selectedSession = key;
+        $sessionTouched = true;
         pop();
     }
 </script>
 
-<div class="container">
-    {#each window.lightdm.sessions as session}
-        <button on:click={() => choose(session.key)}>{session.name}</button>
-    {/each}
-</div>
-
-<!--
-<select bind:value={$selectedSession}>
-    {#each window.lightdm.sessions as session}
-        <option value={session.key}>{session.name}</option>
-    {/each}
-</select>
--->
+<FadeInWrapper>
+    <div class="container">
+        {#each window.lightdm.sessions as session}
+            <button on:click={() => choose(session.key)}>{session.name}</button>
+        {/each}
+    </div>
+</FadeInWrapper>
 
 <style>
     .container {

@@ -304,7 +304,7 @@ export class GreeterConfig implements GreeterConfigClass {
         detect_theme_errors: true,
         screensaver_timeout: 300,
         secure_mode: true,
-        time_language: "",
+        time_language: "de",
         theme: "none",
     };
 
@@ -325,7 +325,7 @@ export class GreeterConfig implements GreeterConfigClass {
     };
 }
 
-let time_language = "";
+let time_language = "de-CH";
 export class ThemeUtils implements ThemeUtilsClass {
     bind_this(context: Record<string, any>) {
         const excluded_methods = ["constructor"];

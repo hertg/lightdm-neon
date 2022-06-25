@@ -4,20 +4,13 @@ export const blend = (a: string, b: string, amount: number) => {
     a = toFullHex(a || '#000000');
     b = toFullHex(b || '#ffffff');
     amount = amount || 0.5;
-
-    console.log(a, b)
-
     let rgbA = toRgb(a.substring(1))
     let rgbB = toRgb(b.substring(1))
-
-    console.log(rgbA, rgbB)
-
     let blended = [
         (1 - amount) * rgbA[0] + amount * rgbB[0],
         (1 - amount) * rgbA[1] + amount * rgbB[1],
         (1 - amount) * rgbA[2] + amount * rgbB[2],
     ]
-
     return toHex(blended);
 }
 

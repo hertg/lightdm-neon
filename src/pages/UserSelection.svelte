@@ -1,30 +1,41 @@
 <script lang="ts">
     import UserOption from "../components/UserOption.svelte";
-    import { slide, fly } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
-import Menu from "../components/Menu.svelte";
+    import { slide, fly, fade } from 'svelte/transition';
+	import { quadInOut } from 'svelte/easing';
+    import Menu from "../components/Menu.svelte";
+    import FadeInWrapper from "../components/FadeInWrapper.svelte";
+    import { onMount } from "svelte";
+    import type { LightDMUser } from "nody-greeter-types";
 
     let select = (username: string) => {
-        console.log(`selected ${username}`);
-        console.log(window.lightdm);
-        let s = window.lightdm?.authenticate(username);
-        console.log(s);
-
-        //if (s) lightdm.respond(username)
+        console.debug(`selected ${username}`);
+        window.lightdm?.authenticate(username);
     };
 
     let other = () => {
         console.log(`select user`);
         window.lightdm?.authenticate(null);
     }
+
+    onMount(async () => {
+        let default_user: LightDMUser = null;
+        if (window.lightdm.users.length === 1) {
+            default_user = window.lightdm.users[0];
+        }
+        if (default_user != null) {
+            window.lightdm.authenticate(default_user.username)
+        }
+    })
 </script>
 
-<Menu />
-<div id="user-list" >
-    {#each window.lightdm.users as user}
-        <UserOption bind:user on:click={() => select(user.username)} />
-    {/each}
-</div>
+<FadeInWrapper>
+    <Menu />
+    <div id="user-list">
+        {#each window.lightdm.users as user}
+            <UserOption bind:user on:click={() => select(user.username)} />
+        {/each}
+    </div>
+</FadeInWrapper>
 
 <!-- login with a user that isn't listed here -->
 <!--<p id="other-user" on:click={other}>Other</p>-->

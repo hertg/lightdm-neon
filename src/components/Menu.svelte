@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { push } from "svelte-spa-router";
+    import { pop, push } from "svelte-spa-router";
     import { selectedSession } from "../store/runtime";
     import MenuButton from "./MenuButton.svelte";
 
@@ -17,8 +17,16 @@
     const showPowerMenu = () => {
         push('/power-menu')
     }
+
+    const back = () => {
+        pop()
+        //push('/')
+    }
 </script>
 
+<div class="menu menu-tl">
+    <MenuButton icon="ArrowLeft24" on:click={back} />
+</div>
 <div class="menu menu-bl">
     <MenuButton icon="Browser24" text={sessionName} on:click={showSessionList} />
     <!--<MenuButton icon="Gear24" text="Settings" />-->
@@ -26,6 +34,7 @@
 <div class="menu menu-br">
     <MenuButton icon="Plug24" text="Power" on:click={showPowerMenu} />
 </div>
+
 
 <style>
     .menu {
@@ -38,6 +47,14 @@
 
     .menu-bl {
         @apply bottom-4 left-4;
+    }
+
+    .menu-tl {
+        @apply top-4 left-4;
+    }
+
+    .menu-tr {
+        @apply top-4 right-4;
     }
 
 </style>

@@ -4,9 +4,7 @@
     $: image = $themeSettings.background_image !== null ? $themeSettings.background_image : defaultImage;
 </script>
 
-<div id="background" style="--bg-image: url('{image}')">
-    
-</div>
+<div id="background" style="--bg-image: url('{image}')"></div>
 
 <style>
     #background {
