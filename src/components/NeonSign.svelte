@@ -4,11 +4,12 @@
     export let text: string;
     export let flicker: boolean = false;
     export let color: string;
+    export let font: string = "Neonderthaw"
 
     $: mixed = blend(color, '#ffffff', 0.75)
 </script>
 
-<span class:flicker style="--sign-color: {color}; --mixed-color: {mixed}">
+<span class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}">
     {text}
 </span>
 
@@ -21,7 +22,8 @@
 			0 0 4px var(--mixed-color),
 			0 0 11px var(--accent-color),
             0 0 33px var(--accent-color),
-			0 0 80px var(--accent-color);
+			0 0 80px var(--accent-color),
+            0 0 140px var(--accent-color);
 		}
 		0% {
 			/* A slightly smaller blur radius */
@@ -29,17 +31,23 @@
 			0 0 4px var(--mixed-color),
 			0 0 14px var(--accent-color),
             0 0 23px var(--accent-color),
-			0 0 73px var(--accent-color);
+			0 0 73px var(--accent-color),
+            0 0 128px var(--accent-color);
 		}
 	}
 
 	span {
-		font-family: 'Neonderthaw';
+		font-family: var(--sign-font);
 		font-size: 8rem;
 		font-weight: normal;
 		color: var(--mixed-color);
         mix-blend-mode: lighten;
-		text-shadow: rgba(255,255,255,0.5) 0px 0px 4px, var(--accent-color) 0px 0px 8px;
+        text-shadow:
+			0 0 4px var(--mixed-color),
+			0 0 11px var(--accent-color),
+            0 0 33px var(--accent-color),
+			0 0 80px var(--accent-color),
+            0 0 140px var(--accent-color);
 		background-clip: text;
 		margin-bottom: 4rem;
 	}

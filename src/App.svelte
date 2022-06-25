@@ -15,7 +15,8 @@
 <div id="app" style="--accent-color: {$themeSettings.colors.accent_color}">
 	<Background />
 	<div id="wrapper" class:blurred>
-		<NeonSign text={$themeSettings.sign.text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} />
+		<!--<input type="color" bind:value={$themeSettings.colors.accent_color} />-->
+		<NeonSign font={$themeSettings.sign.font} text={$themeSettings.sign.text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} />
 		<Router {routes} />
 	</div>
 </div>
