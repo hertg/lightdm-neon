@@ -36,9 +36,11 @@ import { themeSettings } from "../store/settings";
         {#each window.lightdm.users as user}
             <UserOption bind:user on:click={() => select(user.username)} />
         {/each}
+        <!--
         {#if window.lightdm.has_guest_account}
             <UserOption user={null} on:click={() => push('/user')} />
         {/if}
+        -->
         {#if window.lightdm.show_manual_login_hint}
             <UserOption user={null} on:click={() => push('/user')} />
         {/if}

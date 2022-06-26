@@ -31,8 +31,7 @@
             replace('/select-user');
         }
         setTimeout(() => {
-            $backgroundBlur = true;
-            setTimeout(() => {showSign = true}, 50);
+            showSign = true;
         }, delay);
     })
 </script>

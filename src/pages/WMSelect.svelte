@@ -50,7 +50,7 @@
 
 <style>
     .container {
-        @apply w-screen h-screen p-10 flex flex-wrap items-center justify-center text-light-50 gap-4;
+        @apply w-screen h-screen p-10 flex flex-wrap row-auto justify-center content-center text-light-50 gap-4 gap-y-8;
     }
 
     button {

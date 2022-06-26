@@ -18,7 +18,7 @@
 <FadeInWrapper>
     <Menu />
     <div id="user-prompt">
-        <Input type="text" placeholder="Username" bind:value={username} on:enter={submit} icon="Person24" withSubmit={true} />
+        <Input type="text" placeholder="Username" bind:value={username} on:enter={submit} icon="Person24" withSubmit={true} autofocus />
         <p class="cancel-auth" on:click={cancel}>cancel</p>
     </div>
 </FadeInWrapper>
