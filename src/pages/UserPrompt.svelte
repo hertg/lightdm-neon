@@ -1,7 +1,6 @@
 <script lang="ts">
     import { push } from "svelte-spa-router";
 
-    import Button from "../components/Button.svelte";
     import Input from "../components/Input.svelte";
     import Menu from "../components/Menu.svelte";
 
@@ -18,5 +17,5 @@
 
 <Menu />
 <Input bind:value={username} on:enter={submit} icon="Person16" placeholder="Username" />
-<Button primary on:click={submit}>Login</Button>
-<Button on:click={cancel}>Cancel</Button>
+<!--<Button primary on:click={submit}>Login</Button>
+<Button on:click={cancel}>Cancel</Button>-->

@@ -325,7 +325,7 @@ export class GreeterConfig implements GreeterConfigClass {
     };
 }
 
-let time_language = "de-CH";
+let time_language = "";
 export class ThemeUtils implements ThemeUtilsClass {
     bind_this(context: Record<string, any>) {
         const excluded_methods = ["constructor"];

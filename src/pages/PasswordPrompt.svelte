@@ -38,8 +38,6 @@
     <UserImage bind:user />
     <p id="name">{user.display_name}</p>
     <PasswordInput bind:password icon="Key16" on:enter={submit} />
-    <!--<Input type="password" placeholder="Password" bind:value={password} on:enter={submit} autofocus icon="Key16" />-->
-    <!--<Button primary on:click={submit}>Login</Button>-->
     <p class="cancel-auth" on:click={cancel}>change user</p>
 </div>
 
