@@ -7,7 +7,7 @@
 
 <div class="user-option" on:click>
     <UserImage bind:user />
-    <span class="text">{user.display_name}</span>
+    <span class="text">{user?.display_name || "Other"}</span>
 </div>
 
 <style>

@@ -5,43 +5,61 @@
     export let value: string;
     export let type: string = "text";
     export let autofocus: boolean = false;
-    export let label: string = "";
-    export let icon: string = "";
+    export let icon: string = null;
     export let placeholder: string = "";
+    export let withSubmit: boolean = false;
 
     const dispatch = createEventDispatcher();
 
-    const handleInput = (event) => {
-        event.type = type;
+    const onKeypress = (event) => {
+        if (event.charCode === 13) submit();
     }
 
-    const onKeypress = (event) => {
-        if (event.charCode === 13) dispatch('enter');
+    const submit = () => {
+        dispatch('enter')
+    }
+
+    const typeAction = (node: HTMLInputElement) => {
+        node.type = type;
     }
 </script>
 
-<div class="input-container">
-    {#if label}
-        <label>{label}</label>
-    {/if}
+<div class="container">
     {#if icon}
-        <div class="input-icon">
-            <Icon {icon} />
-        </div>
+    <div class="icon">
+        <Icon {icon} />
+    </div>
     {/if}
-    <input use:handleInput bind:value={value} {autofocus} on:keypress={onKeypress} {placeholder} />
+    <input use:typeAction class:hasIcon={icon} class:hasSubmit={withSubmit} bind:value={value} on:keypress={onKeypress} placeholder={placeholder} autofocus={autofocus}>
+    {#if withSubmit}
+        <button type="submit" on:click={submit}>
+            <Icon icon="ArrowRight16" />
+        </button>
+    {/if}
 </div>
 
 <style>
-    .input-container {
-        @apply relative;
+    .container {
+        @apply relative w-full rounded-lg;
     }
 
-    .input-icon {
-        @apply block w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 flex items-center;
+    .icon {
+        @apply flex absolute inset-y-0 left-0 items-center pl-4 fill-white pointer-events-none;
     }
 
     input {
-        @apply border-primary border-2 rounded-md p-2 w-full my-1 box-border focus:outline-none focus:ring focus:border-primary text-center;
+        @apply block p-3 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none;
+    }
+
+    input.hasIcon {
+        @apply pl-12;
+    }
+
+    input.hasSubmit {
+        @apply pr-12;
+    }
+
+    button {
+        @apply flex absolute h-full items-center top-0 right-0 p-4 text-sm font-medium fill-white focus:outline-none;
     }
 </style>

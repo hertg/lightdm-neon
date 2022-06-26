@@ -1,12 +1,17 @@
 <script lang="ts">
     import Icon from './Icon.svelte';
 
-    export let icon: string;
+    export let icon: string = null;
+    export let image: string = null;
     export let text: string;
 </script>
 
 <div class="menu-button" on:click>
-    <Icon {icon} />
+    {#if icon && !image}
+        <Icon {icon} />
+    {:else if image}
+        <img src={image} alt="" onerror='this.style.display = "none"' />
+    {/if}
     <span>{text}</span>
 </div>
 
@@ -21,5 +26,9 @@
 
     span {
         @apply text-lg;
+    }
+
+    img {
+        @apply w-max-92px h-max-92px;
     }
 </style>

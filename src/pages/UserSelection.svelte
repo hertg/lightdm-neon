@@ -5,7 +5,9 @@
     import Menu from "../components/Menu.svelte";
     import FadeInWrapper from "../components/FadeInWrapper.svelte";
     import { onMount } from "svelte";
-    import type { LightDMUser } from "nody-greeter-types";
+    import type { lightdm, LightDMUser } from "nody-greeter-types";
+import { push } from "svelte-spa-router";
+import { themeSettings } from "../store/settings";
 
     let select = (username: string) => {
         console.debug(`selected ${username}`);
@@ -34,6 +36,12 @@
         {#each window.lightdm.users as user}
             <UserOption bind:user on:click={() => select(user.username)} />
         {/each}
+        {#if window.lightdm.has_guest_account}
+            <UserOption user={null} on:click={() => push('/user')} />
+        {/if}
+        {#if window.lightdm.show_manual_login_hint}
+            <UserOption user={null} on:click={() => push('/user')} />
+        {/if}
     </div>
 </FadeInWrapper>
 
