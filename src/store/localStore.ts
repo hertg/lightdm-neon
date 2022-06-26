@@ -14,6 +14,14 @@ export const localStore = <T>(key: string, initial: T) => {
         localStorage.setItem(key, toString(initial));
     }
     const saved: T = toObj(localStorage.getItem(key))
+
+    // add missing values to localstorage saved settings
+    // this is important when new settings are added but 
+    // settings already exist in localstorage
+    if (addMissingValues(saved, initial)) {
+        localStorage.setItem(key, toString(saved));
+    }
+
     const { subscribe, set, update } = writable(saved)
     return {
         subscribe,
@@ -25,7 +33,20 @@ export const localStore = <T>(key: string, initial: T) => {
     }
 }
 
-
-//export const settings: Writable<ThemeSettings> = writable(new ThemeSettings())
-
-//export const background: Writable<string> = writable(null);
+// this method iterates over all keys of the provided def (default) value
+// and checks if the obj also contains the key. if the obj
+// does not contain the key, the default value will be applied.
+// returns true if any change is made to obj.
+const addMissingValues = <T>(obj: T, def: T) => {
+    let changed = false;
+    Object.keys(def).forEach(key => {
+        if (obj[key] === undefined) {
+            obj[key] = def[key];
+            changed = true;
+        }
+        if (typeof def[key] === 'object' && def[key] != null) {
+            addMissingValues(obj[key], def[key]);
+        }
+    });
+    return changed;
+}

@@ -42,7 +42,7 @@
 
 <style>
     #user-list {
-        @apply flex w-sm gap-8;
+        @apply flex gap-8;
     }
     /*#other-user {
         @apply text-center cursor-pointer mt-4;

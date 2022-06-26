@@ -1,3 +1,6 @@
+# LightDM Neon Theme
+Please note that this theme is compatible with [web-greeter](https://github.com/JezerM/web-greeter), and [nody-greeter](https://github.com/JezerM/nody-greeter) which are continuation projects of the no longer maintained [Antergos/web-greeter](https://github.com/Antergos/web-greeter).
+
 ## Installation
 
 ```sh

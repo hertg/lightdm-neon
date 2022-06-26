@@ -1,5 +1,5 @@
 
-THEME_NAME := svelte
+THEME_NAME := neon
 THEME_DIRECTORY := /usr/share/web-greeter/themes
 
 # Absolute path to project directory, required for symbolic links
