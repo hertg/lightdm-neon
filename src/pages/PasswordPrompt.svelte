@@ -51,6 +51,6 @@
     }
 
     .cancel-auth {
-        @apply text-center cursor-pointer text-white text-sm;
+        @apply text-center cursor-pointer text-light-500 text-12px;
     }
 </style>

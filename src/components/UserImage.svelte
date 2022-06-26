@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { LightDMUser } from "nody-greeter-types";
+import { themeSettings } from "../store/settings";
+    import { blend } from "../utils/color";
 
     export let user: LightDMUser;
 
@@ -14,10 +16,13 @@
         return null;
     }
 
+    $: colA = blend($themeSettings.colors.accent_color, '#ffffff', 0.3)
+    $: colB = blend($themeSettings.colors.accent_color, '#000000', 0.6)
+
     let img = chooseImage();
 </script>
 
-<div class="picture">
+<div class="picture" style="--custom-from: {colA}; --custom-to: {colB}">
     {#if img !== null}
         <img src={img} alt="profile picture of {user.display_name}" onerror='this.style.display = "none"' />
     {/if}
@@ -25,7 +30,10 @@
 
 <style>
     .picture {
-        @apply rounded-full overflow-hidden bg-gradient-to-br from-primary via-between to-secondary w-max-92px h-max-92px;
+        /*--tw-gradient-from: rgba(142, 45, 226, var(--tw-from-opacity, 1));*/
+        --tw-gradient-stops: var(--custom-from), var(--custom-to, rgba(255, 255, 255, 0));
+        /*--tw-gradient-to: rgba(74, 0, 224, var(--tw-to-opacity, 1));*/
+        @apply rounded-full overflow-hidden bg-gradient-to-br w-max-92px h-max-92px;
     }
 
     img {
