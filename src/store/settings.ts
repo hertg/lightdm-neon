@@ -34,7 +34,7 @@ const initialSettings: ThemeSettings = {
         show_clock: false,
     },
     colors: {
-        accent_color: '#f71111'
+        accent_color: '#FF008E'
     }
 }
 

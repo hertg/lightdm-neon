@@ -25,7 +25,7 @@
 
 <style>
     .picture {
-        @apply rounded-full overflow-hidden bg-gradient-to-tl from-purple-500 to-pink-400 w-max-92px h-max-92px;
+        @apply rounded-full overflow-hidden bg-gradient-to-br from-primary via-between to-secondary w-max-92px h-max-92px;
     }
 
     img {
