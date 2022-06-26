@@ -1,6 +1,6 @@
 [theme]
-name=starter
-description=A lightdm starter theme
+name=neon
+description=A lightdm theme with a nostalgic neon look
 engine=lightdm-webkit2-greeter
 url=index.html
 session=leftwm
