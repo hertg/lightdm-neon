@@ -31,19 +31,18 @@ import { themeSettings } from '../store/settings';
 
 <style>
     .container {
-        @apply relative w-full overflow-hidden rounded-lg;
+        @apply relative w-full rounded-lg;
     }
 
     .icon {
-        @apply flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none;
+        @apply flex absolute inset-y-0 left-0 items-center pl-4 fill-white pointer-events-none;
     }
 
     input {
-        @apply block p-3 pl-10 w-full z-20 text-sm rounded-lg border-none focus:outline-none;
+        @apply block p-3 pl-12 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none;
     }
 
     button {
-        @apply flex absolute h-full items-center top-0 right-0 p-3 text-sm font-medium fill-white bg-blue-700 hover:bg-blend-soft-light focus:outline-none;
-        background-color: var(--accent-color);
+        @apply flex absolute h-full items-center top-0 right-0 p-4 text-sm font-medium fill-white focus:outline-none;
     }
 </style>
