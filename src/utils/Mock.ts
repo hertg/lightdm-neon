@@ -173,12 +173,6 @@ export class Greeter implements GreeterClass {
             "Highly configurable framework window manager"
         ),
         new LightDMSession("ubuntu", "Ubuntu", "This session starts Ubuntu"),
-        new LightDMSession(
-            "ubuntu-wayland",
-            "Ubuntu (on Wayland)",
-            "This session starts Ubuntu on Wayland",
-            "wayland"
-        ),
         new LightDMSession("plasma", "Plasma (X11)", "Plasma, by KDE"),
         new LightDMSession("mate", "MATE", "This session logs you into MATE"),
         new LightDMSession(
@@ -187,9 +181,9 @@ export class Greeter implements GreeterClass {
             "This session logs you into Cinnamon"
         ),
         new LightDMSession(
-            "openbox",
-            "Openbox",
-            "This session logs you into Openbox"
+            "leftwm",
+            "LeftWM",
+            "A tiling window manager for Adventurers"
         ),
     ];
     show_manual_login_hint = true;

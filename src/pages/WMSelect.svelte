@@ -30,7 +30,8 @@
         "sway",
         "ubuntu",
         "xfce",
-        "xmonad"
+        "xmonad",
+        "leftwm"
     ]
     const sessionLogo = (key: string) => {
         if (!availableLogos.includes(key)) {
