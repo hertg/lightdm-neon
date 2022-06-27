@@ -23,12 +23,21 @@
     let showSign: boolean = false;
 
     const onClick = (e: Event) => {
+        forward();
+    }
+
+    const forward = () => {
         push('/select-user');
     }
 
     onMount(async() => {
         if ($themeSettings.skip_splashscreen) {
             replace('/select-user');
+        }
+        window.onkeypress = (e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+                forward();
+            }
         }
         setTimeout(() => {
             showSign = true;
