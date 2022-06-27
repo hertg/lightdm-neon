@@ -3,7 +3,7 @@
     import { push } from "svelte-spa-router";
     import { slide, fly, fade } from 'svelte/transition';
 	import { quadInOut } from 'svelte/easing';
-    import Menu from "../components/Menu.svelte";
+    import Container from "../components/Container.svelte";
     import Input from "../components/Input.svelte";
     import UserImage from "../components/UserImage.svelte";
     import { selectedSession, sessionTouched } from "../store/runtime";
@@ -28,13 +28,14 @@
     };
 </script>
 
-<Menu />
-<div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
-    <UserImage bind:user />
-    <p id="name">{user.display_name}</p>
-    <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus />
-    <p class="cancel-auth" on:click={cancel}>change user</p>
-</div>
+<Container>
+    <div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
+        <UserImage bind:user />
+        <p id="name">{user.display_name}</p>
+        <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus />
+        <p class="cancel-auth" on:click={cancel}>change user</p>
+    </div>
+</Container>
 
 <style>
     #pw-prompt {

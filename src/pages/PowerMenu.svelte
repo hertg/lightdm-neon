@@ -1,9 +1,9 @@
 <script lang="ts">
     import BigButton from "../components/BigButton.svelte";
-import FadeInWrapper from "../components/FadeInWrapper.svelte";
+    import Container from "../components/Container.svelte";
 </script>
 
-<FadeInWrapper>
+<Container>
     <div class="container">
         {#if window.lightdm.can_hibernate}
             <BigButton icon="Moon24" text="Hibernate" on:click={window.lightdm.hibernate} />
@@ -21,7 +21,7 @@ import FadeInWrapper from "../components/FadeInWrapper.svelte";
             <BigButton icon="Plug24" text="Shutdown" on:click={window.lightdm.shutdown} />
         {/if}
     </div>
-</FadeInWrapper>
+</Container>
 
 
 <style>

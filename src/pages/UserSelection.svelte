@@ -1,13 +1,9 @@
 <script lang="ts">
     import UserOption from "../components/UserOption.svelte";
-    import { slide, fly, fade } from 'svelte/transition';
-	import { quadInOut } from 'svelte/easing';
-    import Menu from "../components/Menu.svelte";
-    import FadeInWrapper from "../components/FadeInWrapper.svelte";
     import { onMount } from "svelte";
-    import type { lightdm, LightDMUser } from "nody-greeter-types";
-import { push } from "svelte-spa-router";
-import { themeSettings } from "../store/settings";
+    import type { LightDMUser } from "nody-greeter-types";
+    import { push } from "svelte-spa-router";
+    import Container from "../components/Container.svelte";
 
     let select = (username: string) => {
         console.debug(`selected ${username}`);
@@ -30,8 +26,7 @@ import { themeSettings } from "../store/settings";
     })
 </script>
 
-<FadeInWrapper>
-    <Menu />
+<Container>
     <div id="user-list">
         {#each window.lightdm.users as user}
             <UserOption bind:user on:click={() => select(user.username)} />
@@ -45,7 +40,7 @@ import { themeSettings } from "../store/settings";
             <UserOption user={null} on:click={() => push('/user')} />
         {/if}
     </div>
-</FadeInWrapper>
+</Container>
 
 <!-- login with a user that isn't listed here -->
 <!--<p id="other-user" on:click={other}>Other</p>-->

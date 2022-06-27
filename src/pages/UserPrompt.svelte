@@ -1,7 +1,6 @@
 <script lang="ts">
     import { push } from "svelte-spa-router";
-    import Menu from "../components/Menu.svelte";
-    import FadeInWrapper from "../components/FadeInWrapper.svelte";
+    import Container from "../components/Container.svelte";
     import Input from "../components/Input.svelte";
 
     let username: string = "";
@@ -15,13 +14,12 @@
     };
 </script>
 
-<FadeInWrapper>
-    <Menu />
+<Container>
     <div id="user-prompt">
         <Input type="text" placeholder="Username" bind:value={username} on:enter={submit} icon="Person24" withSubmit={true} autofocus />
         <p class="cancel-auth" on:click={cancel}>cancel</p>
     </div>
-</FadeInWrapper>
+</Container>
 
 <style>
     #user-prompt {

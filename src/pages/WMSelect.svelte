@@ -1,7 +1,7 @@
 <script lang="ts">
     import { pop } from "svelte-spa-router";
     import BigButton from "../components/BigButton.svelte";
-    import FadeInWrapper from "../components/FadeInWrapper.svelte";
+    import Container from "../components/Container.svelte";
 
     import { selectedSession, sessionTouched } from "../store/runtime";
 
@@ -41,13 +41,13 @@
     }
 </script>
 
-<FadeInWrapper>
+<Container>
     <div class="container">
         {#each window.lightdm.sessions as session}
             <BigButton on:click={() => choose(session.key)} text={session.name} image={sessionLogo(session.key)} />
         {/each}
     </div>
-</FadeInWrapper>
+</Container>
 
 <style>
     .container {
