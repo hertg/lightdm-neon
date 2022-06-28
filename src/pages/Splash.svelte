@@ -30,22 +30,25 @@
         push('/select-user');
     }
 
+    const onKeypress = (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            forward();
+        }
+    }
+
     onMount(async() => {
         if ($themeSettings.skip_splashscreen) {
             replace('/select-user');
         }
-        window.onkeypress = (e: KeyboardEvent) => {
-            if (e.key === 'Enter') {
-                forward();
-            }
-        }
+        document.getElementById('splash').focus();
         setTimeout(() => {
             showSign = true;
         }, delay);
     })
 </script>
 
-<div id="splash" on:click={onClick}>
+<!-- tabindex is so we can focus the div and grab keypress to continue on pressing enter -->
+<div id="splash" on:click={onClick} tabindex="0" on:keypress={onKeypress}>
     {#if showSign}
         <NeonSign font={$themeSettings.sign.font} text={text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} />
     {/if}
