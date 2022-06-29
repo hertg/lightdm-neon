@@ -4,16 +4,28 @@
 	import { quadOut } from 'svelte/easing';
 
     export let text: string;
+	export let showClock: boolean = false;
     export let flicker: boolean = false;
     export let color: string;
     export let font: string = "Neonderthaw"
+	export let size: string = "8rem";
 
     $: mixed = blend(color, '#ffffff', 0.75)
+
+	const getTime = () => {
+        // changing it to lower-case because the uppercase AM/PM looks bad with some "neon" fonts
+        return window.theme_utils.get_current_localized_time().toLowerCase();
+    }
+
+    if (showClock) {
+        text = getTime();
+        setInterval(() => {
+            text = getTime();
+        }, 1000);
+    }
 </script>
 
-<span 
-    in:fly="{{y: 60, duration: 600, opacity: 0, easing: quadOut}}"
-    class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}">
+<span class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}; --size: {size};">
     {text}
 </span>
 
@@ -41,20 +53,18 @@
 	}
 
 	span {
-        user-select: none;
+		@apply block select-none bg-clip-text text-center;
 		font-family: var(--sign-font);
-		font-size: 8rem;
+		font-size: var(--size);
+		line-height: var(--size);
 		font-weight: normal;
 		color: var(--mixed-color);
-        mix-blend-mode: lighten;
         text-shadow:
 			0 0 4px var(--mixed-color),
 			0 0 11px var(--accent-color),
             0 0 33px var(--accent-color),
 			0 0 80px var(--accent-color),
             0 0 140px var(--accent-color);
-		background-clip: text;
-		margin-bottom: 4rem;
 	}
 
 	span.flicker {

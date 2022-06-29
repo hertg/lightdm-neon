@@ -1,5 +1,5 @@
 import { replace, push } from "svelte-spa-router";
-import { notify } from "./utils/Notification";
+import { notify } from "./utils/notification";
 
 export abstract class Theme {
     abstract on_user_prompt(message: string): void;
@@ -12,7 +12,7 @@ export class MyTheme implements Theme {
         notify(message, type);
     }
     on_user_prompt(message: string): void {
-        replace('/user?message=' + message);
+        push('/user?message=' + message);
     }
     on_password_prompt(message: string): void {
         push('/login?message=' + message);

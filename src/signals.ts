@@ -2,7 +2,7 @@ import { replace } from "svelte-spa-router";
 import { get } from "svelte/store";
 import { selectedSession } from "./store/runtime";
 import type { Theme } from "./theme";
-import { notify } from "./utils/Notification";
+import { notify } from "./utils/notification";
 
 export const connectSignals = () => {
     console.debug(`connecting to lightdm signals using theme`, window.theme);

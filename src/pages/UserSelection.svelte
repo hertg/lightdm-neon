@@ -11,7 +11,7 @@
     };
 
     let other = () => {
-        console.log(`select user`);
+        console.debug(`select 'other' user`);
         window.lightdm?.authenticate(null);
     }
 
@@ -28,8 +28,8 @@
 
 <Container>
     <div id="user-list">
-        {#each window.lightdm.users as user}
-            <UserOption bind:user on:click={() => select(user.username)} />
+        {#each window.lightdm.users as user, i}
+            <UserOption bind:user on:click={() => select(user.username)} tabindex={i+1} />
         {/each}
         <!--
         {#if window.lightdm.has_guest_account}
@@ -37,7 +37,7 @@
         {/if}
         -->
         {#if window.lightdm.show_manual_login_hint}
-            <UserOption user={null} on:click={() => push('/user')} />
+            <UserOption user={null} on:click={() => other()} tabindex={window.lightdm.users.length+1} />
         {/if}
     </div>
 </Container>

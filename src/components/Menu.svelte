@@ -4,8 +4,6 @@
     import MenuButton from "./MenuButton.svelte";
 
     let sessionName = "";
-
-    //let sessionName = selectedSession.;
     selectedSession.subscribe(s => {
         sessionName = window.lightdm.sessions.find(k => k.key === $selectedSession)?.name; 
     })
@@ -30,12 +28,12 @@
 <div class="menu menu-tl">
     <MenuButton icon="ArrowLeft24" on:click={back} />
 </div>
-<div class="menu menu-bl">
-    <MenuButton icon="Gear24" text="Settings" on:click={showSettings} />
-    <MenuButton icon="Browser24" text={sessionName} on:click={showSessionList} />
+<div class="menu menu-tr">
+    <MenuButton icon="Gear24" text="" on:click={showSettings} />
+    <MenuButton icon="Plug24" text="" on:click={showPowerMenu} />
 </div>
-<div class="menu menu-br">
-    <MenuButton icon="Plug24" text="Power" on:click={showPowerMenu} />
+<div class="menu menu-bl">
+    <MenuButton icon="Browser24" text={sessionName} on:click={showSessionList} />
 </div>
 
 

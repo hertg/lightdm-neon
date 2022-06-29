@@ -1,5 +1,5 @@
 import App from './App.svelte';
-import './utils/Mock';
+import './utils/mock';
 import { connectSignals } from './signals';
 import { MyTheme } from './theme';
 import { selectedSession } from './store/runtime';

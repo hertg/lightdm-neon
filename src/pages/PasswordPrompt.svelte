@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { push } from "svelte-spa-router";
+    import { push, replace } from "svelte-spa-router";
     import { slide, fly, fade } from 'svelte/transition';
 	import { quadInOut } from 'svelte/easing';
     import Container from "../components/Container.svelte";
@@ -13,6 +13,18 @@
     let password: string = "";
 
     onMount(async () => {
+        // if we go to the '/login' page (which can happen when going back in history), 
+        // but lightdm is currently not in an authentication process, the current user is 'undefined'.
+        // In this case, we redirect back to the user-selection page.
+        if (!user) {
+            replace('/select-user');
+            return;
+        }
+
+        console.log(user);
+
+        // if the user has a preferred session, automatically select it if
+        // the session switcher hasn't been touched yet.
         if (user.session && $selectedSession !== user.session && !$sessionTouched) {
             $selectedSession = user.session;
         }
@@ -29,12 +41,14 @@
 </script>
 
 <Container>
-    <div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
-        <UserImage bind:user />
-        <p id="name">{user.display_name}</p>
-        <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus />
-        <p class="cancel-auth" on:click={cancel}>change user</p>
-    </div>
+    {#if user !== undefined}
+        <div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
+            <UserImage bind:user />
+            <p id="name">{user.display_name}</p>
+            <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus />
+            <p class="cancel-auth" on:click={cancel}>change user</p>
+        </div>
+    {/if}
 </Container>
 
 <style>

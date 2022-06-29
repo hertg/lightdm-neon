@@ -195,6 +195,10 @@ export class Greeter implements GreeterClass {
     ];
 
     authenticate(username: string | null) {
+        if (username !== null && this.users.find(u => u.username === username) === undefined) {
+            this.show_message._emit("Unknown username", 1);
+            return false;
+        }
         this.authentication_user = username;
         this.in_authentication = true;
         if (username == null) {
@@ -264,7 +268,7 @@ export class Greeter implements GreeterClass {
                     this.is_authenticated = false;
                     this.authentication_complete._emit();
                     this.show_prompt._emit("Password: ", 1);
-                }, 3000);
+                }, 300);
             }
         }
         return true;

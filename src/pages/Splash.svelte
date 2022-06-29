@@ -3,22 +3,10 @@
     import { push, replace } from 'svelte-spa-router'
     import NeonSign from "../components/NeonSign.svelte";
     import { themeSettings } from "../store/settings";
-    import { backgroundBlur } from "../store/runtime";
+    import { quintOut } from "svelte/easing";
+    import { fly } from "svelte/transition";
 
-    let text: string = $themeSettings.sign.text;
-    let delay: number = 0;
-
-    const getTime = () => {
-        // changing it to lower-case because the uppercase AM/PM looks bad with some "neon" fonts
-        return window.theme_utils.get_current_localized_time().toLowerCase();
-    }
-
-    if ($themeSettings.sign.show_clock) {
-        text = getTime();
-        setInterval(() => {
-            text = getTime();
-        }, 1000);
-    }   
+    let delay: number = 50;
 
     let showSign: boolean = false;
 
@@ -50,12 +38,15 @@
 <!-- tabindex is so we can focus the div and grab keypress to continue on pressing enter -->
 <div id="splash" on:click={onClick} tabindex="0" on:keypress={onKeypress}>
     {#if showSign}
-        <NeonSign font={$themeSettings.sign.font} text={text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} />
+    <div in:fly={{duration: 800, y: 60, easing: quintOut}}>
+        <NeonSign font={$themeSettings.sign.font} text={$themeSettings.sign.text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} showClock={$themeSettings.sign.show_clock} />
+    </div>
     {/if}
 </div>
 
 <style>
     #splash {
+        position: absolute;
         width: 100%;
         height: 100%;
         display: flex;
@@ -63,5 +54,10 @@
         justify-content: center;
         cursor: pointer;
         flex-direction: column;
+        outline: none;
+    }
+
+    #splash:focus {
+        outline: none;
     }
 </style>
