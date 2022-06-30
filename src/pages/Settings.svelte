@@ -24,13 +24,16 @@
 
 <Container>
     <div id="settings">
-        <div id="menu">
+        <!--<div id="menu">
             <MenuButton text="General" icon="Gear24" on:click={() => replace('/settings/general')} />
             <MenuButton text="Background" icon="Image24" on:click={() => replace('/settings/background')} />
             <MenuButton text="Splashscreen" icon="Home24" on:click={() => replace('/settings/splashscreen')} />
-        </div>
+        </div>-->
         <div id="content">
-            <Router {routes} {prefix}></Router>
+            <SettingsGeneral />
+            <SettingsSplashscreen />
+            <SettingsBackground />
+            <!--<Router {routes} {prefix}></Router>-->
         </div>
     </div>
 </Container>
@@ -41,7 +44,7 @@
     }
 
     #settings {
-        @apply text-white fill-white flex flex-col gap-4 m-auto;
+        @apply text-white fill-white flex flex-col gap-4 m-auto w-5/6 h-5/6 overflow-auto absolute;
     }
 
     #menu {

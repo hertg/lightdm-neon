@@ -8,9 +8,9 @@
 </script>
 
 {#if !hideMenu}
-<Menu />
+    <Menu />
 {/if}
-<div in:fade="{{ duration: 340, easing: quadInOut }}">
+<div in:fade="{{ duration: 340, easing: quadInOut }}" style="display: contents">
     <slot></slot>
 </div>
 

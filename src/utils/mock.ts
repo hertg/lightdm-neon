@@ -367,9 +367,24 @@ export class ThemeUtils implements ThemeUtilsClass {
             path = path.replace(/\/\.+(?=\/)/g, "");
         }
 
+        let response = [];
+        if (path.startsWith("/usr/share/web-greeter/themes/neon/")) {
+            response = [
+                "assets/img/backgrounds/arcade.jpg", 
+                "assets/img/backgrounds/canyon.jpg", 
+                "assets/img/backgrounds/computer.jpg", 
+                "assets/img/backgrounds/paper.jpg", 
+                "assets/img/backgrounds/plants.jpg", 
+                "assets/img/backgrounds/purple.jpg", 
+                "assets/img/backgrounds/splashes.jpg", 
+                "assets/img/backgrounds/supermarket.jpg", 
+                "assets/img/backgrounds/urban.jpg"
+            ];
+        }
+
         try {
             // Should be changed here
-            return callback([]);
+            return callback(response);
         } catch (err) {
             console.error(`theme_utils.dirlist(): ${err}`);
             return callback([]);
