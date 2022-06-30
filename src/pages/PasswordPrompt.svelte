@@ -1,12 +1,12 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { push, replace } from "svelte-spa-router";
-    import { slide, fly, fade } from 'svelte/transition';
+    import { fade } from 'svelte/transition';
 	import { quadInOut } from 'svelte/easing';
     import Container from "../components/Container.svelte";
     import Input from "../components/Input.svelte";
     import UserImage from "../components/UserImage.svelte";
-    import { selectedSession, sessionTouched } from "../store/runtime";
+    import { authenticating, selectedSession, sessionTouched } from "../store/runtime";
 
     let user = window.lightdm.users.find(u => u.username === window.lightdm.authentication_user);
     
@@ -31,10 +31,12 @@
     });
 
     const submit = () => {
+        $authenticating = true;
         window.lightdm.respond(password);
     };
 
     const cancel = () => {
+        $authenticating = false;
         window.lightdm.cancel_authentication();
         push("/select-user");
     };
@@ -45,7 +47,7 @@
         <div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
             <UserImage bind:user />
             <p id="name">{user.display_name}</p>
-            <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus />
+            <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus loading={$authenticating} />
             <p class="cancel-auth" on:click={cancel}>change user</p>
         </div>
     {/if}

@@ -1,8 +1,5 @@
-import { replace } from "svelte-spa-router";
 import { get } from "svelte/store";
-import { selectedSession } from "./store/runtime";
-import type { Theme } from "./theme";
-import { notify } from "./utils/notification";
+import { authenticating, selectedSession } from "./store/runtime";
 
 export const connectSignals = () => {
     console.debug(`connecting to lightdm signals using theme`, window.theme);
@@ -25,10 +22,12 @@ export const connectSignals = () => {
 
 	window.lightdm?.authentication_complete.connect(() => {
 		console.debug("authentication_complete");
+		authenticating.update(_ => false);
 		if (!window.lightdm?.is_authenticated) {
 			window.lightdm.show_message._emit("Authentication Failed", "error");
 			window.lightdm.authenticate(window.lightdm.authentication_user);
 		} else {
+			console.debug("authentication successful, start session");
 			let s = get(selectedSession);
 			window.lightdm?.start_session(s ?? null);
 		}

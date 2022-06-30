@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
+    import { createEventDispatcher, onMount } from 'svelte';
     import Icon from './Icon.svelte';
 
     export let value: string;
@@ -8,6 +8,7 @@
     export let icon: string = null;
     export let placeholder: string = "";
     export let withSubmit: boolean = false;
+    export let loading: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -27,10 +28,21 @@
 <div class="container">
     {#if icon}
     <div class="icon">
-        <Icon {icon} />
+        {#if loading}
+            <Icon icon="IssueDraft16" rotate />
+        {:else}
+            <Icon {icon} />
+        {/if}
     </div>
     {/if}
-    <input use:typeAction class:hasIcon={icon} class:hasSubmit={withSubmit} bind:value={value} on:keypress={onKeypress} placeholder={placeholder} autofocus={autofocus}>
+    <input use:typeAction 
+        class:hasIcon={icon} 
+        class:hasSubmit={withSubmit} 
+        bind:value={value} on:keypress={onKeypress} 
+        {placeholder} 
+        {autofocus} 
+        readonly={loading}>
+
     {#if withSubmit}
         <button type="submit" on:click={submit}>
             <Icon icon="ArrowRight16" />
@@ -45,10 +57,10 @@
 
     .icon {
         @apply flex absolute inset-y-0 left-0 items-center pl-4 fill-white pointer-events-none;
-    }
+    } 
 
     input {
-        @apply block p-3 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none;
+        @apply block p-3 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none disabled:text-gray-500 disabled:placeholder-gray-500;
     }
 
     input.hasIcon {

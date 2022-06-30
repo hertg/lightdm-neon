@@ -1,20 +1,23 @@
 <script lang="ts">
     import * as Octicons from "svelte-octicons";
     export let icon: string;
+    export let rotate: boolean = false;
 </script>
 
-<div class="icon-container">
+<div class="icon-container" class:rotate>
     <svelte:component this={Octicons[icon]} />
 </div>
 
 <style>
-    .icon-container {
-        /*@apply block w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3 flex items-center;*/
-        /*@apply block w-6 h-6 absolute top-1/2 left-3 flex items-center;*/
+    @keyframes spin { 
+        100% { 
+            -webkit-transform: rotate(360deg); 
+            transform:rotate(360deg); 
+        } 
     }
 
-    /*svg {
-        @apply w-full h-full;
-    }*/
+    .icon-container.rotate {
+        animation: spin 4s linear infinite;
+    }
 </style>
 

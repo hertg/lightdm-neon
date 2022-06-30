@@ -10,5 +10,7 @@ export const sessionTouched: Writable<boolean> = writable(false);
 // whether the background should be blurred or not
 export const backgroundBlur: Writable<boolean> = writable(false);
 
+export const authenticating: Writable<boolean> = writable(false);
+
 export const notifications: Writable<GreeterNotification[]> = writable([]);
 

@@ -268,7 +268,7 @@ export class Greeter implements GreeterClass {
                     this.is_authenticated = false;
                     this.authentication_complete._emit();
                     this.show_prompt._emit("Password: ", 1);
-                }, 300);
+                }, 1000);
             }
         }
         return true;
