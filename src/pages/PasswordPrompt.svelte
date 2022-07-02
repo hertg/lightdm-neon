@@ -31,8 +31,10 @@
     });
 
     const submit = () => {
-        $authenticating = true;
-        window.lightdm.respond(password);
+        if (!$authenticating) {
+            $authenticating = true;
+            window.lightdm.respond(password);
+        }
     };
 
     const cancel = () => {

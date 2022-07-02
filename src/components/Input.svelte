@@ -28,11 +28,7 @@
 <div class="container">
     {#if icon}
     <div class="icon">
-        {#if loading}
-            <Icon icon="IssueDraft16" rotate />
-        {:else}
-            <Icon {icon} />
-        {/if}
+        <Icon {icon} />
     </div>
     {/if}
     <input use:typeAction 
@@ -44,8 +40,13 @@
         readonly={loading}>
 
     {#if withSubmit}
-        <button type="submit" on:click={submit}>
-            <Icon icon="ArrowRight16" />
+        <button type="submit" on:click={submit} disabled={loading}>
+            <!--<Icon icon="ArrowRight16" />-->
+            {#if loading}
+                <Icon icon="IssueDraft16" rotate />
+            {:else}
+                <Icon icon="ArrowRight16" />
+            {/if}
         </button>
     {/if}
 </div>
@@ -60,7 +61,7 @@
     } 
 
     input {
-        @apply block p-3 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none disabled:text-gray-500 disabled:placeholder-gray-500;
+        @apply block p-3 w-full z-20 text-sm rounded-lg bg-transparent border-1 border-white placeholder-light-300 text-white focus:outline-none disabled:text-gray-500 disabled:placeholder-gray-500 read-only:text-gray-500;
     }
 
     input.hasIcon {
@@ -72,6 +73,6 @@
     }
 
     button {
-        @apply flex absolute h-full items-center top-0 right-0 p-4 text-sm font-medium fill-white focus:outline-none;
+        @apply flex absolute h-full items-center top-0 right-0 p-4 text-sm font-medium fill-white focus:outline-none disabled:cursor-default;
     }
 </style>
