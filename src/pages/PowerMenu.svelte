@@ -1,9 +1,10 @@
 <script lang="ts">
-    import BigButton from "../components/BigButton.svelte";
+    import { pop } from "svelte-spa-router";
+import BigButton from "../components/BigButton.svelte";
     import Container from "../components/Container.svelte";
 </script>
 
-<Container>
+<Container backFn={() => pop()}>
     <div class="container">
         {#if window.lightdm.can_hibernate}
             <BigButton icon="Moon24" text="Hibernate" on:click={window.lightdm.hibernate} />

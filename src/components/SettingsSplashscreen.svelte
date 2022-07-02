@@ -1,19 +1,27 @@
 <script lang="ts">
     import Input from "./Input.svelte";
-    import { SignFont, themeSettings } from "../store/settings";
+    import { themeSettings } from "../store/settings";
     import NeonSign from "./NeonSign.svelte";
-import App from "../App.svelte";
+    import Radio from "./Radio.svelte";
+    import Icon from "./Icon.svelte";
+
+    const fontOptions: RadioOption[] = [
+        {value: "Neonderthaw", text: "Neonderthaw", icon: "Typography24"},
+        {value: "Neoneon",text: "Neoneon",icon: "Pencil24"},
+        {value: "Beon",text: "Beon",icon: "Pencil24"},
+        {value: "Higher Monday",text: "Higher Monday",icon: "Pencil24"},
+        {value: "Selfie",text: "Selfie",icon: "Pencil24"},
+        {value: "Hastron",text: "Hastron",icon: "Pencil24"},
+        {value: "Neon Sans",text: "Neon Sans",icon: "Pencil24"}
+    ]
+
 </script>
 
     <Input icon="Pencil24" bind:value={$themeSettings.sign.text} />
 
-    <select bind:value={$themeSettings.sign.font}>
-    {#each Object.values(SignFont) as font}
-        <option value={font}>{font}</option>
-    {/each}
-    </select>
+    <span><Icon icon="Typography24" /> Font</span>
+    <Radio id="font" bind:value={$themeSettings.sign.font} options={fontOptions} />
 
-    <p>TODO: Splashscreen Font</p> <!-- Typography24 -->
     <p>TODO: Splashscreen Skip</p> <!-- EyeClosed24 -->
     <p>TODO: Splashscreen Show Clock</p> <!-- Clock24 -->
     <p>TODO: Splashscreen Flicker</p> <!-- Star24 / Flame24 -->

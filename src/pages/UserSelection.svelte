@@ -4,13 +4,16 @@
     import type { LightDMUser } from "nody-greeter-types";
     import { push } from "svelte-spa-router";
     import Container from "../components/Container.svelte";
+    import { themeSettings } from "../store/settings";
 
-    let select = (username: string) => {
+    let backFn = () => {push('/')};
+
+    const select = (username: string) => {
         console.debug(`selected ${username}`);
         window.lightdm?.authenticate(username);
     };
 
-    let other = () => {
+    const other = () => {
         console.debug(`select 'other' user`);
         window.lightdm?.authenticate(null);
     }
@@ -23,10 +26,15 @@
         if (default_user != null) {
             window.lightdm.authenticate(default_user.username)
         }
+        if ($themeSettings.skip_splashscreen) {
+            backFn = null;
+        }
     })
+
+    
 </script>
 
-<Container>
+<Container {backFn}>
     <div id="user-list">
         {#each window.lightdm.users as user, i}
             <UserOption bind:user on:click={() => select(user.username)} tabindex={i+1} />

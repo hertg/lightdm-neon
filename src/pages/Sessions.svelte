@@ -41,7 +41,7 @@
     }
 </script>
 
-<Container>
+<Container backFn={() => pop()}>
     <div class="container">
         {#each window.lightdm.sessions as session}
             <BigButton on:click={() => choose(session.key)} text={session.name} image={sessionLogo(session.key)} />

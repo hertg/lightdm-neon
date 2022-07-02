@@ -44,9 +44,9 @@
     };
 </script>
 
-<Container>
+<Container backFn={cancel}>
     {#if user !== undefined}
-        <div id="pw-prompt" in:fade="{{ duration: 340, easing: quadInOut }}">
+        <div id="pw-prompt">
             <UserImage bind:user />
             <p id="name">{user.display_name}</p>
             <Input type="password" placeholder="Password" bind:value={password} on:enter={submit} icon="Key16" withSubmit={true} autofocus loading={$authenticating} />

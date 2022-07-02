@@ -1,9 +1,12 @@
 <script lang="ts">
-    import { pop, push, replace } from "svelte-spa-router";
+    import { pop, push } from "svelte-spa-router";
     import { selectedSession } from "../store/runtime";
     import MenuButton from "./MenuButton.svelte";
 
+    export let backFn: () => void = null;
+
     let sessionName = "";
+
     selectedSession.subscribe(s => {
         sessionName = window.lightdm.sessions.find(k => k.key === $selectedSession)?.name; 
     })
@@ -19,14 +22,12 @@
     const showSettings = () => {
         push('/settings')
     }
-
-    const back = () => {
-        pop()
-    }
 </script>
 
 <div class="menu menu-tl">
-    <MenuButton icon="ArrowLeft24" on:click={back} />
+    {#if backFn}
+        <MenuButton icon="ArrowLeft24" on:click={backFn} />
+    {/if}
 </div>
 <div class="menu menu-tr">
     <MenuButton icon="Gear24" text="" on:click={showSettings} />

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Router from "svelte-spa-router";
+	import Router, { location, push } from "svelte-spa-router";
 	import Background from "./components/Background.svelte";
 	import { themeSettings } from "./store/settings";
 	import { backgroundBlur } from "./store/runtime";
@@ -21,6 +21,12 @@
 		'/powermenu': PowerMenu,
 		'/settings': Settings,
 		'/settings/*': Settings, // uses a nested router
+	}
+
+	if ($themeSettings.skip_splashscreen) {
+		if ($location === '/') {
+			push('/select-user');
+		}
 	}
 </script>
 

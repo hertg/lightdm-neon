@@ -3,7 +3,6 @@ import './utils/mock';
 import { connectSignals } from './signals';
 import { MyTheme } from './theme';
 import { selectedSession } from './store/runtime';
-import type { LightDMUser } from 'nody-greeter-types';
 
 function initGreeter() {
 	console.debug("the web greeter is ready, initializing...");
@@ -15,15 +14,6 @@ function initGreeter() {
 		target: document.body,
 		props: {}
 	});
-
-	/*window.theme_utils.dirlist("/usr/share/web-greeter/themes/svelte/images", true, (files) => {
-		console.log(files);
-	});
-
-	window.theme_utils.dirlist(window.greeter_config.branding.background_images_dir, true, (files) => {
-		console.log(files);
-	});*/
-
 	let default_session: string = window.lightdm.default_session;
 	if (!default_session) {
 		if (window.lightdm.sessions.length > 0) {
@@ -32,7 +22,6 @@ function initGreeter() {
 			console.warn("no session found to choose from?");
 		}
 	}
-
 	console.debug(`default_session is '${default_session}'`);
 	selectedSession.update(_ => default_session);
 };

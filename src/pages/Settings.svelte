@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { themeSettings } from "../store/settings";
-    import Router, {replace} from "svelte-spa-router";
+    import Router, {replace, pop} from "svelte-spa-router";
     import Container from "../components/Container.svelte";
     import MenuButton from "../components/MenuButton.svelte";
     import NeonSign from "../components/NeonSign.svelte";
@@ -9,12 +9,12 @@
     import SettingsGeneral from "../components/SettingsGeneral.svelte";
     import SettingsSplashscreen from "../components/SettingsSplashscreen.svelte";
 
-    const prefix = '/settings'
+    /*const prefix = '/settings'
     const routes = {
         '/splashscreen': SettingsSplashscreen,
         '/background': SettingsBackground,
         '/general': SettingsGeneral,
-    }
+    }*/
 
     onMount(async() => {
         replace('/settings/general')
@@ -22,7 +22,7 @@
 
 </script>
 
-<Container>
+<Container backFn={() => pop()}>
     <div id="settings">
         <!--<div id="menu">
             <MenuButton text="General" icon="Gear24" on:click={() => replace('/settings/general')} />
@@ -44,7 +44,7 @@
     }
 
     #settings {
-        @apply text-white fill-white flex flex-col gap-4 m-auto w-5/6 h-5/6 overflow-auto absolute;
+        @apply text-white fill-white flex flex-col gap-4 w-5/6 h-5/6 overflow-auto;
     }
 
     #menu {

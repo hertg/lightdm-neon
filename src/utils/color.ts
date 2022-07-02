@@ -26,7 +26,7 @@ const toRgb = (c: string) => {
     return [parseInt(c[0] + c[1], 16), parseInt(c[2] + c[3], 16), parseInt(c[4] + c[5], 16)]
 }
 
-const toHex = (c: number[]) => {
+export const toHex = (c: number[]) => {
     return '#' + intToHex(c[0]) + intToHex(c[1]) + intToHex(c[2]);
 }
 

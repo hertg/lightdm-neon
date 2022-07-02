@@ -25,9 +25,6 @@
     }
 
     onMount(async() => {
-        if ($themeSettings.skip_splashscreen) {
-            replace('/select-user');
-        }
         document.getElementById('splash').focus();
         setTimeout(() => {
             showSign = true;
