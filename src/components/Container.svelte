@@ -16,6 +16,6 @@
 
 <style>
     #container {
-        @apply flex justify-center items-center w-full h-full;
+        @apply flex justify-center items-center w-full h-full lg:w-5xl;
     }
 </style>
