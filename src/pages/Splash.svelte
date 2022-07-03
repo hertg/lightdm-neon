@@ -36,7 +36,11 @@
 <div id="splash" on:click={onClick} tabindex="0" on:keypress={onKeypress}>
     {#if showSign}
     <div in:fly={{duration: 800, y: 60, easing: quintOut}}>
-        <NeonSign font={$themeSettings.sign.font} text={$themeSettings.sign.text} flicker={$themeSettings.sign.flicker} color={$themeSettings.colors.accent_color} showClock={$themeSettings.sign.show_clock} />
+        <NeonSign font={$themeSettings.sign.font} 
+            text={$themeSettings.sign.text} 
+            flicker={$themeSettings.sign.flicker} 
+            color={$themeSettings.colors.accent_color} 
+            showClock={$themeSettings.sign.show_clock} />
     </div>
     {/if}
 </div>

@@ -17,16 +17,18 @@
         return window.theme_utils.get_current_localized_time().toLowerCase();
     }
 
-    if (showClock) {
-        text = getTime();
-        setInterval(() => {
-            text = getTime();
-        }, 1000);
-    }
+	let time = getTime();
+	setInterval(() => {
+		if (showClock) time = getTime();
+    }, 1000);
 </script>
 
 <span class:flicker style="--sign-color: {color}; --mixed-color: {mixed}; --sign-font: {font}; --size: {size};">
-    {text}
+	{#if showClock}
+		{time}
+	{:else}
+    	{text}
+	{/if}
 </span>
 
 <style>

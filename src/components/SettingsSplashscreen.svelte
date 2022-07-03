@@ -4,6 +4,7 @@
     import NeonSign from "./NeonSign.svelte";
     import Radio from "./Radio.svelte";
     import Icon from "./Icon.svelte";
+    import Switch from "./Switch.svelte";
 
     const fontOptions: RadioOption[] = [
         {value: "Neonderthaw", text: "Neonderthaw", icon: "Typography24"},
@@ -22,11 +23,11 @@
     <span><Icon icon="Typography24" /> Font</span>
     <Radio id="font" bind:value={$themeSettings.sign.font} options={fontOptions} />
 
-    <p>TODO: Splashscreen Skip</p> <!-- EyeClosed24 -->
-    <p>TODO: Splashscreen Show Clock</p> <!-- Clock24 -->
-    <p>TODO: Splashscreen Flicker</p> <!-- Star24 / Flame24 -->
+    <Switch bind:checked={$themeSettings.skip_splashscreen} title="Skip Splashscreen" subtitle="Whether the splashscreen should be skipped" name="skip-splashscreen" icon="EyeClosed24" />
 
-    <span>preview</span>
+    <Switch bind:checked={$themeSettings.sign.show_clock} title="Show Clock" subtitle="Display the current time instead of the custom text" name="show-clock" icon="Clock24" />
+    <Switch bind:checked={$themeSettings.sign.flicker} title="Sign Flicker" subtitle="Enable a flickering animation (may be hardware resource intensive)" name="flicker" icon="LightBulb24" />
+
     <div class="preview">
         <NeonSign 
         font={$themeSettings.sign.font} 
@@ -40,7 +41,12 @@
 
 <style>
     .preview {
-        @apply border border-white p-8;
+        @apply border border-white p-8 relative rounded;
+    }
+
+    .preview::before {
+        @apply absolute top-1 left-1 text-xs;
+        content: 'live preview';
     }
 
 </style>
