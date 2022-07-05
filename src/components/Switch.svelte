@@ -47,7 +47,7 @@
     }
 
     .switch input:checked + .slider {
-        /**/
+        @apply border-white;
     }
     
     .switch input:checked + .slider:before {

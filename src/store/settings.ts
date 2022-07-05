@@ -12,6 +12,7 @@ export enum SignFont {
 
 export class ThemeSettings {
     background_image: string;
+    background_blur: boolean;
     skip_splashscreen: boolean;
     sign: {
         text: string;
@@ -26,6 +27,7 @@ export class ThemeSettings {
 
 const initialSettings: ThemeSettings = {
     background_image: null,
+    background_blur: true,
     skip_splashscreen: false,
     sign: {
         text: "hello neon",

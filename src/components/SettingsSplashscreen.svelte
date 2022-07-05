@@ -42,6 +42,7 @@
 <style>
     .preview {
         @apply border border-white p-8 relative rounded;
+        will-change: contents;
     }
 
     .preview::before {

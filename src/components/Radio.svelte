@@ -30,7 +30,7 @@
     }
 
     label {
-        @apply flex border border-white text-white gap-2 p-2 rounded-sm cursor-pointer transition;
+        @apply flex border border-white text-white gap-2 p-2 rounded-sm cursor-pointer transition select-none;
     }
 
     input:checked + label {

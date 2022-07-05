@@ -32,7 +32,7 @@
 
 <div id="app" style="--accent-color: {$themeSettings.colors.accent_color}">
 	<Background />
-	<div id="wrapper" class:blurred={$backgroundBlur}>
+	<div id="wrapper">
 		<Notifications />
 		<Router {routes} />
 	</div>
@@ -57,11 +57,5 @@
 
 	#wrapper {
 		@apply absolute flex flex-col h-screen w-screen justify-center items-center bg-gray-900/40;
-		backdrop-filter: blur(4px) opacity(0);
-		transition: backdrop-filter .75s;
-	}
-
-	#wrapper.blurred {
-		backdrop-filter: blur(8px) opacity(1);
 	}
 </style>

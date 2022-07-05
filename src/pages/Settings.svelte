@@ -45,6 +45,7 @@
 
     #settings {
         @apply text-white fill-white flex flex-col gap-4 w-5/6 h-5/6 overflow-auto;
+        will-change: scroll-position; /* this helps with performance */
     }
 
     #menu {
