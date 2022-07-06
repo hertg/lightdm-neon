@@ -9,12 +9,11 @@
     import SettingsGeneral from "../components/SettingsGeneral.svelte";
     import SettingsSplashscreen from "../components/SettingsSplashscreen.svelte";
 
-    /*const prefix = '/settings'
+    const prefix = '/settings'
     const routes = {
-        '/splashscreen': SettingsSplashscreen,
         '/background': SettingsBackground,
         '/general': SettingsGeneral,
-    }*/
+    }
 
     onMount(async() => {
         replace('/settings/general')
@@ -24,23 +23,40 @@
 
 <Container backFn={() => pop()}>
     <div id="settings">
+        <div class="preview">
+            <NeonSign 
+            font={$themeSettings.sign.font} 
+            text={$themeSettings.sign.text} 
+            flicker={$themeSettings.sign.flicker} 
+            color={$themeSettings.colors.accent_color} 
+            showClock={$themeSettings.sign.show_clock}
+            size="4rem" />
+        </div>
+
         <!--<div id="menu">
             <MenuButton text="General" icon="Gear24" on:click={() => replace('/settings/general')} />
             <MenuButton text="Background" icon="Image24" on:click={() => replace('/settings/background')} />
-            <MenuButton text="Splashscreen" icon="Home24" on:click={() => replace('/settings/splashscreen')} />
         </div>-->
         <div id="content">
             <SettingsGeneral />
-            <SettingsSplashscreen />
+            <!--<SettingsSplashscreen />
             <SettingsBackground />
-            <!--<Router {routes} {prefix}></Router>-->
+
+            <Router {routes} {prefix}></Router>-->
         </div>
     </div>
 </Container>
 
 <style>
-    #sign {
-        @apply w-screen flex items-center justify-center py-10;
+    .preview {
+        @apply p-8;
+        /*@apply border border-white p-8 relative rounded;*/
+        will-change: contents;
+    }
+
+    .preview::before {
+        /*@apply absolute top-1 left-1 text-xs;
+        content: 'live preview';*/
     }
 
     #settings {
@@ -49,7 +65,7 @@
     }
 
     #menu {
-        @apply flex gap-4;
+        @apply flex gap-4 justify-center;
     }
 
     #content {

@@ -1,5 +1,7 @@
 <script lang="ts">
 import { themeSettings } from "../store/settings";
+import Icon from "./Icon.svelte";
+import Switch from "./Switch.svelte";
 
 
 	let userImages: string[] = [];
@@ -19,21 +21,31 @@ import { themeSettings } from "../store/settings";
 
 </script>
 
-<h1>User Images</h1>
-<div id="user-images" class="image-group">
-	{#each userImages as img}
-		<div class="image" style="--bg-image: url('{img}')" on:click={() => onClick(img)}></div>
-	{/each}
-	{#if userImages.length == 0}
-		<span>No images found</span>
-	{/if}
+<div class="flex flex-col gap-2 text-sm">
+	<span class="flex gap-2 items-center">
+		<Icon icon="Image16" />
+		User Images
+	</span>
+	<div id="user-images" class="image-group">
+		{#each userImages as img}
+			<div class="image" style="--bg-image: url('{img}')" on:click={() => onClick(img)}></div>
+		{/each}
+		{#if userImages.length == 0}
+			<span>No images found</span>
+		{/if}
+	</div>
 </div>
 
-<h1>Theme Images</h1>
-<div id="custom-images" class="image-group">
-	{#each themeImages as img}
-		<div class="image" style="--bg-image: url('{img}')" on:click={() => onClick(img)}></div>
-	{/each}
+<div class="flex flex-col gap-2 text-sm">
+	<span class="flex gap-2 items-center">
+		<Icon icon="Image16" />
+		Theme Images
+	</span>
+	<div id="custom-images" class="image-group">
+		{#each themeImages as img}
+			<div class="image" style="--bg-image: url('{img}')" on:click={() => onClick(img)}></div>
+		{/each}
+	</div>
 </div>
 
 <style>
@@ -46,7 +58,7 @@ import { themeSettings } from "../store/settings";
 	}
 
 	.image {
-		@apply w-320px h-180px hover:bg-gray-400 bg-cover bg-center border border-gray-400 bg-blend-overlay transition cursor-pointer;
+		@apply w-256px h-144px hover:bg-gray-400 bg-cover bg-center border border-gray-400 bg-blend-overlay transition cursor-pointer;
         background-image: var(--bg-image);
 	}
 

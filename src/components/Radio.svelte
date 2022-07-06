@@ -11,6 +11,7 @@
         {#each options as option, index}
             <input type="radio" id="{id}_{index}" value="{option.value}" bind:group={value} />
             <label for="{id}_{index}">
+                    <!--<Icon icon="Typography24" />-->
                     <!--<Icon icon={option.icon} />-->
                     <div class="text">
                         {option.text}
@@ -22,7 +23,7 @@
 
 <style>
     span.buttonset {
-        @apply flex relative gap-2;
+        @apply flex flex-wrap relative gap-2;
     }
 
     span.buttonset > label {
@@ -30,7 +31,7 @@
     }
 
     label {
-        @apply flex border border-white text-white gap-2 p-2 rounded-sm cursor-pointer transition select-none;
+        @apply flex flex-col border border-white text-white w-36 h-16 justify-center items-center gap-2 p-2 rounded-sm cursor-pointer transition select-none;
     }
 
     input:checked + label {

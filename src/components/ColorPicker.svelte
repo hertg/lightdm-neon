@@ -62,7 +62,7 @@
 
 <style>
   #colorpicker {
-    @apply bg-gray-800 flex flex-col gap-2 p-3 py-4 rounded;
+    @apply bg-gray-800 flex flex-col gap-2 p-3 py-4 rounded-md shadow;
     width: var(--picker-width);
     height: var(--picker-height);
   }

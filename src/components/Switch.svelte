@@ -25,7 +25,7 @@
 
 <style>
     label {
-        @apply box-border flex gap-4 items-center py-3 px-4 mb-2 rounded cursor-pointer shadow select-none;
+        @apply box-border flex gap-4 items-center py-3 px-4 mb-2 rounded cursor-pointer select-none;
     }
 
     div.text {

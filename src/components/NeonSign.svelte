@@ -40,8 +40,7 @@
 			0 0 4px var(--mixed-color),
 			0 0 11px var(--accent-color),
             0 0 33px var(--accent-color),
-			0 0 80px var(--accent-color),
-            0 0 140px var(--accent-color);
+			0 0 60px var(--accent-color);
 		}
 		0% {
 			/* A slightly smaller blur radius */
@@ -49,8 +48,7 @@
 			0 0 4px var(--mixed-color),
 			0 0 14px var(--accent-color),
             0 0 23px var(--accent-color),
-			0 0 73px var(--accent-color),
-            0 0 128px var(--accent-color);
+			0 0 49px var(--accent-color);
 		}
 	}
 
@@ -65,8 +63,7 @@
 			0 0 4px var(--mixed-color),
 			0 0 11px var(--accent-color),
             0 0 33px var(--accent-color),
-			0 0 80px var(--accent-color),
-            0 0 140px var(--accent-color);
+			0 0 60px var(--accent-color);
 	}
 
 	span.flicker {
