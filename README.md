@@ -1,6 +1,23 @@
 # LightDM Neon Theme
-This theme is developed for [web-greeter](https://github.com/JezerM/web-greeter) / [nody-greeter](https://github.com/JezerM/nody-greeter). 
-The no longer maintained [Antergos/web-greeter](https://github.com/Antergos/web-greeter) is not supported.
+> This theme is developed for [web-greeter](https://github.com/JezerM/web-greeter) / [nody-greeter](https://github.com/JezerM/nody-greeter). The no longer maintained [Antergos/web-greeter](https://github.com/Antergos/web-greeter) is not supported.
+
+## Demo
+See a fully functional [live demo](https://hertg.github.io/lightdm-neon/) of the theme.
+
+## Screenshots
+![Splashscreen](./docs/screenshot_splashscreen.png)
+![User Selection](./docs/screenshot_user_selection.png)
+![Password Prompt](./docs/screenshot_prompt.png)
+![Power Menu](./docs/screenshot_powermenu.png)
+
+## Customize
+You can customize the theme to your own preferences.
+- enter your own text for the neon sign or simply display a clock
+- change the accent color (used for neon sign, user avatar placeholders, ...)
+- choose from different fonts for the neon sign
+- choose from different background images or use your own
+- enable / disable the splashscreen
+- and more...
 
 ## Build
 ### Prerequisites
@@ -18,9 +35,6 @@ make install
 ```sh
 make uninstall
 ```
-
-## TODO
-- [ ] Lockscreen (dbus: `org.freedesktop.DisplayManager.Seat.Lock`)
 
 ## Contributing
 See [CONTRIBUTING.md](https://github.com/hertg/lightdm-neon/blob/main/CONTRIBUTING.md)
