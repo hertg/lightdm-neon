@@ -72,8 +72,6 @@ export const hslToHex = (hsl: number[]) => {
   let s = hsl[1] / 100;
   let l = hsl[2] / 100;
 
-  console.log("l", l);
-
   let c = (1 - Math.abs(2 * l - 1)) * s;
   let x = c * (1 - Math.abs((h / 60) % 2 - 1));
   let m = l - c/2;

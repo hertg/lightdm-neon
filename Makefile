@@ -9,20 +9,19 @@ ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 all: build
 
-dev:
+dev: npm-install
 	npm run dev
 
-build:
+build: npm-install
 	npm run build
 
 install: build
 	sudo cp -r $(ROOT_DIR)/public $(THEME_DIRECTORY)/$(THEME_NAME)
-	@echo "Please update your /etc/lightdm/lightdm-webkit2-greeter.conf or /etc/lightdm/web-greeter.yml manually"
-
-install-dev: build
-	sudo ln -sf $(ROOT_DIR)/public $(THEME_DIRECTORY)/$(THEME_NAME)
-	@echo "Please update your /etc/lightdm/lightdm-webkit2-greeter.conf or /etc/lightdm/web-greeter.yml manually"
+	@echo "Please update your /etc/lightdm/web-greeter.yml manually"
 
 uninstall:
 	sudo rm -r $(THEME_DIRECTORY)/$(THEME_NAME)
-	@echo "Please update your /etc/lightdm/lightdm-webkit2-greeter.conf or /etc/lightdm/web-greeter.yml manually"
+	@echo "Please update your /etc/lightdm/web-greeter.yml manually"
+
+npm-install:
+	npm install
