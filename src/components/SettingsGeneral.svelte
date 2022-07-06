@@ -1,13 +1,12 @@
 <script lang="ts">
     import { themeSettings } from "../store/settings";
-    import {toHex} from "../utils/color";
+    import {rgbToHex} from "../utils/color";
     import ColorPicker from "./ColorPicker.svelte";
     import Icon from "./Icon.svelte";
     import Switch from "./Switch.svelte";
     
-    const colorCallback = (rgba: any) => {
-        let rgb: number[] = [rgba.detail.r, rgba.detail.g, rgba.detail.b];
-        $themeSettings.colors.accent_color = toHex(rgb);
+    const colorCallback = (e: CustomEvent) => {
+        $themeSettings.colors.accent_color = e.detail;
     }
 
 </script>
@@ -17,7 +16,7 @@
 </span>
 
 <div class="picker">
-    <ColorPicker on:colorChange={colorCallback} startColor={$themeSettings.colors.accent_color}/>
+    <ColorPicker startColor={$themeSettings.colors.accent_color} on:colorChange={colorCallback}  />
 </div>
 
 <Switch bind:checked={$themeSettings.background_blur} title="Blur Background" subtitle="When enabled, the background images will be blurred (slight performane impact)" name="blur-background" icon="Image24" />
