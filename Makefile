@@ -19,8 +19,8 @@ build: npm-install
 	npm run build
 
 install:
-	install -dm644 $(THEME_DIRECTORY)/$(THEME_NAME)
-	cp -r $(ROOT_DIR)/public $(THEME_DIRECTORY)/$(THEME_NAME)
+	install -dm755 $(THEME_DIRECTORY)/$(THEME_NAME)
+	cp -r $(ROOT_DIR)/public/. $(THEME_DIRECTORY)/$(THEME_NAME)
 	@echo "Please update your /etc/lightdm/web-greeter.yml manually"
 
 uninstall:
