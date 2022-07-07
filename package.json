@@ -1,6 +1,6 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "lightdm-neon",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "rollup -c",
