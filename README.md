@@ -16,9 +16,9 @@
   </p>
 </div>
 
-![Splashscreen](./docs/screenshot_splashscreen.png)
-![User Selection](./docs/screenshot_user_selection.png)
-![Password Prompt](./docs/screenshot_prompt.png)
+![Splashscreen](./docs/splash.jpg)
+![User Selection](./docs/users.jpg)
+![Password Prompt](./docs/password.jpg)
 
 ## Make it your own
 You can customize the theme to your own preferences.
