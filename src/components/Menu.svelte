@@ -22,6 +22,10 @@
     const showSettings = () => {
         push('/settings')
     }
+
+    const showBackgrounds = () => {
+        push('/backgrounds')
+    }
 </script>
 
 <div class="menu menu-tl">
@@ -31,6 +35,7 @@
 </div>
 <div class="menu menu-tr">
     <MenuButton icon="Gear24" text="" on:click={showSettings} />
+    <MenuButton icon="Image24" text="" on:click={showBackgrounds} />
     <MenuButton icon="Plug24" text="" on:click={showPowerMenu} />
 </div>
 <div class="menu menu-bl">

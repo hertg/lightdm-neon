@@ -11,6 +11,7 @@
 	import PowerMenu from "./pages/PowerMenu.svelte";
 	import Settings from "./pages/Settings.svelte";
 	import Notifications from "./components/Notifications.svelte";
+	import Backgrounds from "./pages/Backgrounds.svelte";
 
 	const routes = {
 		'/': Splash,
@@ -19,6 +20,7 @@
 		'/user': UserPrompt,
 		'/sessions': Sessions,
 		'/powermenu': PowerMenu,
+		'/backgrounds': Backgrounds,
 		'/settings': Settings,
 		'/settings/*': Settings, // uses a nested router
 	}

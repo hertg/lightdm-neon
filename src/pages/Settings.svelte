@@ -1,18 +1,27 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { themeSettings } from "../store/settings";
-    import Router, {replace, pop} from "svelte-spa-router";
+    import {replace, pop} from "svelte-spa-router";
+    import ColorPicker from "../components/ColorPicker.svelte";
     import Container from "../components/Container.svelte";
-    import MenuButton from "../components/MenuButton.svelte";
+    import Icon from "../components/Icon.svelte";
+    import Input from "../components/Input.svelte";
     import NeonSign from "../components/NeonSign.svelte";
-    import SettingsBackground from "../components/SettingsBackground.svelte";
-    import SettingsGeneral from "../components/SettingsGeneral.svelte";
-    import SettingsSplashscreen from "../components/SettingsSplashscreen.svelte";
+    import Radio from "../components/Radio.svelte";
+    import Switch from "../components/Switch.svelte";
+    import { themeSettings } from "../store/settings";
+    
+    const fontOptions: RadioOption[] = [
+        {value: "Neonderthaw", text: "Neonderthaw", icon: "Typography24"},
+        {value: "Neoneon",text: "Neoneon",icon: "Pencil24"},
+        {value: "Beon",text: "Beon",icon: "Pencil24"},
+        {value: "Higher Monday",text: "Higher Monday",icon: "Pencil24"},
+        {value: "Selfie",text: "Selfie",icon: "Pencil24"},
+        {value: "Hastron",text: "Hastron",icon: "Pencil24"},
+        {value: "Neon Sans",text: "Neon Sans",icon: "Pencil24"}
+    ]
 
-    const prefix = '/settings'
-    const routes = {
-        '/background': SettingsBackground,
-        '/general': SettingsGeneral,
+    const colorCallback = (e: CustomEvent) => {
+        $themeSettings.colors.accent_color = e.detail;
     }
 
     onMount(async() => {
@@ -23,52 +32,78 @@
 
 <Container backFn={() => pop()}>
     <div id="settings">
-        <div class="preview">
-            <NeonSign 
-            font={$themeSettings.sign.font} 
-            text={$themeSettings.sign.text} 
-            flicker={$themeSettings.sign.flicker} 
-            color={$themeSettings.colors.accent_color} 
-            showClock={$themeSettings.sign.show_clock}
-            size="4rem" />
-        </div>
-
-        <!--<div id="menu">
-            <MenuButton text="General" icon="Gear24" on:click={() => replace('/settings/general')} />
-            <MenuButton text="Background" icon="Image24" on:click={() => replace('/settings/background')} />
-        </div>-->
-        <div id="content">
-            <SettingsGeneral />
-            <!--<SettingsSplashscreen />
-            <SettingsBackground />
-
-            <Router {routes} {prefix}></Router>-->
+        <div class="flex flex-col gap-8">
+            <div class="flex flex-col border rounded p-4">
+                <div class="flex flex-wrap lg:flex-nowrap">
+                    <div class="flex w-full lg:w-1/2">
+                        <Switch bind:checked={$themeSettings.skip_splashscreen} title="Skip Splashscreen" subtitle="Whether the splashscreen should be skipped" name="skip-splashscreen" icon="EyeClosed24" />
+                    </div>
+                    <div class="flex w-full lg:w-1/2">
+                        <Switch bind:checked={$themeSettings.sign.flicker} title="Sign Flicker" subtitle="Enable a flickering animation (may be hardware resource intensive)" name="flicker" icon="LightBulb24" />
+                    </div>
+                </div>
+                <div class="flex flex-wrap lg:flex-nowrap">
+                    <div class="flex w-full lg:w-1/2">
+                        <Switch bind:checked={$themeSettings.sign.show_clock} title="Show Clock" subtitle="Display the current time instead of the custom text" name="show-clock" icon="Clock24" />
+                    </div>
+                    <div class="flex w-full lg:w-1/2">
+                        <Switch bind:checked={$themeSettings.background_blur} title="Blur Background" subtitle="When enabled, the background images will be blurred (slight performane impact)" name="blur-background" icon="Image24" />
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-2 text-sm w-full">
+                <span class="flex gap-2 items-center">
+                    <Icon icon="Eye16" />
+                    Preview
+                </span>
+                <div class="preview">
+                    <NeonSign 
+                    font={$themeSettings.sign.font} 
+                    text={$themeSettings.sign.text} 
+                    flicker={$themeSettings.sign.flicker} 
+                    color={$themeSettings.colors.accent_color} 
+                    showClock={$themeSettings.sign.show_clock}
+                    size="4rem" />
+                </div>
+            </div>    
+    
+            <div class="flex flex-col gap-2 text-sm">
+                <span class="flex gap-2 items-center">
+                    <Icon icon="Pencil16" />
+                    Neon Sign Text
+                </span>
+                <Input bind:value={$themeSettings.sign.text} />
+            </div>
+                
+            <div class="flex gap-4 w-full flex-wrap lg:flex-nowrap">
+                <div class="flex flex-col gap-2 text-sm">
+                    <span class="flex gap-2 items-center">
+                        <Icon icon="Paintbrush16" />
+                        Accent Color
+                    </span>
+                    <ColorPicker startColor={$themeSettings.colors.accent_color} on:colorChange={colorCallback} width={300} height={220}  />
+                </div>
+    
+                <div class="flex flex-col gap-2 text-sm">
+                    <span class="flex gap-2 items-center">
+                        <Icon icon="Typography16" />
+                        Font
+                    </span>
+                    <Radio id="font" bind:value={$themeSettings.sign.font} options={fontOptions} />    
+                </div>
+            </div>
         </div>
     </div>
 </Container>
 
 <style>
-    .preview {
-        @apply p-8;
-        /*@apply border border-white p-8 relative rounded;*/
-        will-change: contents;
-    }
-
-    .preview::before {
-        /*@apply absolute top-1 left-1 text-xs;
-        content: 'live preview';*/
-    }
-
     #settings {
-        @apply text-white fill-white flex flex-col gap-4 w-5/6 h-5/6 overflow-auto;
+        @apply text-white fill-white overflow-auto h-full w-full;
         will-change: scroll-position; /* this helps with performance */
     }
 
-    #menu {
-        @apply flex gap-4 justify-center;
-    }
-
-    #content {
-        @apply p-4 flex-grow;
+    .preview {
+        @apply flex items-center justify-center w-full py-8 border rounded;
     }
 </style>

@@ -53,7 +53,7 @@
 
 <style>
     .container {
-        @apply relative w-full rounded-lg;
+        @apply relative w-full rounded;
     }
 
     .icon {
