@@ -5,6 +5,7 @@
     import { push } from "svelte-spa-router";
     import Container from "../components/Container.svelte";
     import { themeSettings } from "../store/settings";
+    import { userAutoSelectHappened } from "../store/runtime";
 
     let backFn = () => {push('/')};
 
@@ -23,7 +24,8 @@
         if (window.lightdm.users.length === 1) {
             default_user = window.lightdm.users[0];
         }
-        if (default_user != null) {
+        if (default_user != null && !$userAutoSelectHappened) {
+            $userAutoSelectHappened = true;
             window.lightdm.authenticate(default_user.username)
         }
         if ($themeSettings.skip_splashscreen) {

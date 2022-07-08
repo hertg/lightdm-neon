@@ -14,3 +14,6 @@ export const authenticating: Writable<boolean> = writable(false);
 
 export const notifications: Writable<GreeterNotification[]> = writable([]);
 
+// indicates whether the auto redirect on the user-selection page
+// has happened once. When it has happened before, it shouldn't happen again
+export const userAutoSelectHappened: Writable<boolean> = writable(false);
