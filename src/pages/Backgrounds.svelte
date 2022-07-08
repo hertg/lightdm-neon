@@ -1,6 +1,5 @@
 <script lang="ts">
     import Container from "../components/Container.svelte";
-    import {pop} from "svelte-spa-router";
     import Icon from "../components/Icon.svelte";
     import { themeSettings } from "../store/settings";
 
@@ -20,7 +19,7 @@
 	}
 </script>
 
-<Container backFn={() => pop()}>
+<Container>
     <div id="backgrounds">
         <div class="flex flex-col gap-2 text-sm">
             <span class="flex gap-2 items-center">

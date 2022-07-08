@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { pop, push } from "svelte-spa-router";
+    import { push } from "svelte-spa-router";
     import { selectedSession } from "../store/runtime";
     import MenuButton from "./MenuButton.svelte";
 

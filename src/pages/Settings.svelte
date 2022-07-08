@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-    import {replace, pop} from "svelte-spa-router";
     import ColorPicker from "../components/ColorPicker.svelte";
     import Container from "../components/Container.svelte";
     import Icon from "../components/Icon.svelte";
@@ -24,13 +22,9 @@
         $themeSettings.colors.accent_color = e.detail;
     }
 
-    onMount(async() => {
-        replace('/settings/general')
-    });
-
 </script>
 
-<Container backFn={() => pop()}>
+<Container>
     <div id="settings">
         <div class="flex flex-col gap-8">
             <div class="flex flex-col border rounded p-4">

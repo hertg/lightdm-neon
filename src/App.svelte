@@ -22,7 +22,6 @@
 		'/powermenu': PowerMenu,
 		'/backgrounds': Backgrounds,
 		'/settings': Settings,
-		'/settings/*': Settings, // uses a nested router
 	}
 
 	if ($themeSettings.skip_splashscreen) {

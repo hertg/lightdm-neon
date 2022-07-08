@@ -2,9 +2,16 @@
     import { fade } from 'svelte/transition';
 	import { quadInOut } from 'svelte/easing';
     import Menu from './Menu.svelte';
+    import { push } from 'svelte-spa-router';
 
     export let hideMenu: boolean = false;
-    export let backFn: () => void = null;
+    export let backFn: () => void = () => {
+        if (window.lightdm.in_authentication) {
+            push('/login');
+        } else {
+            push('/select-user');
+        }
+    };
 </script>
 
 {#if !hideMenu}
