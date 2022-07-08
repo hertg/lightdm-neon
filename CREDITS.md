@@ -18,6 +18,7 @@
 ## Fonts
 | Font | Link |
 | --- | --- |
+| `Sora` | [Font by Jonathan Barnbrook, Julián Moncada](https://fonts.google.com/specimen/Sora) |
 | `Neonderthaw` | [Font by Robert Leuschke](https://fonts.google.com/specimen/Neonderthaw) |
 | `Selfie` | [Font by Maximiliano Sproviero](https://sproviero-type.com/index.html) |
 | `Hastron` | [Font by Vunira Design](https://www.creativefabrica.com/designer/vunira/) |

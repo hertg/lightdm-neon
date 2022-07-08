@@ -99,7 +99,7 @@
 
 <style>
     #settings {
-        @apply text-white fill-white overflow-auto h-full w-full;
+        @apply text-white fill-white overflow-auto w-full max-h-full;
         will-change: scroll-position; /* this helps with performance */
     }
 

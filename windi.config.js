@@ -13,7 +13,7 @@ module.exports = {
         between: '#612897',
       },
       fontFamily: {
-        //'sans': ['Outfit', 'system-ui']
+        'sans': ['Sora', 'Outfit', 'system-ui']
       },
       blur: {
         xs: '2px',
