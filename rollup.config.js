@@ -35,7 +35,7 @@ function serve() {
 export default {
 	input: 'src/main.ts',
 	output: {
-		sourcemap: true,
+		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
 		file: 'public/bundle.js'
@@ -51,6 +51,11 @@ export default {
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
+			},
+			onwarn: (warning, handler) => {
+				// disable 'A11y: Avoid using autofocus' compiler warning
+				if (warning.code === 'a11y-autofocus') return
+				handler(warning)
 			}
 		}),
 		// we'll extract any component CSS out into

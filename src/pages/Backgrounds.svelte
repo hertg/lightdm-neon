@@ -55,10 +55,6 @@
         @apply flex flex-col gap-8 text-white fill-white;
     }
 
-    h1 {
-		@apply text-2xl;
-	}
-
 	.image-group {
 		@apply flex flex-wrap gap-4;
 	}

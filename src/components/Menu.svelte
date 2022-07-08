@@ -48,10 +48,6 @@
         @apply flex absolute fill-light-400 gap-3;
     }
 
-    .menu-br {
-        @apply bottom-4 right-4;
-    }
-
     .menu-bl {
         @apply bottom-4 left-4;
     }
@@ -63,5 +59,4 @@
     .menu-tr {
         @apply top-4 right-4;
     }
-
 </style>

@@ -52,12 +52,4 @@
     .container {
         @apply w-screen h-screen p-10 flex flex-wrap row-auto justify-center content-center text-light-50 gap-4 gap-y-8;
     }
-
-    button {
-        @apply px-2 py-1 cursor-pointer items-center select-none transition;
-    }
-
-    button:hover {
-        background-color: var(--accent-color);
-    }
 </style>
