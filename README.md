@@ -72,6 +72,11 @@ This theme is developed for [web-greeter](https://github.com/JezerM/web-greeter)
 make build
 ```
 
+### Run in dev mode
+```sh
+make dev
+```
+
 ## Contributing
 See [CONTRIBUTING.md](https://github.com/hertg/lightdm-neon/blob/main/CONTRIBUTING.md)
 
