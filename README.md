@@ -33,6 +33,7 @@ You can customize the theme to your own preferences.
 Click here for a fully functional [live demo](https://hertg.github.io/lightdm-neon/) of the theme.
 
 ## Installation
+> :bulb: You still need to [enable the theme](#enable-the-theme) after installation.
 ### Manual
 ```sh
 git clone https://github.com/hertg/lightdm-neon.git
@@ -50,6 +51,14 @@ paru -S lightdm-theme-neon-git
 ```
 > :bulb: [paru](https://github.com/Morganamilo/paru) is an AUR helper written in Rust
 
+## Enable the theme
+Make sure to set the `theme` in your greeter configuration.
+```yaml
+# /etc/lightdm/web-greeter.yml
+greeter:
+    theme: neon
+```
+
 ## Compatibility
 This theme is developed for [web-greeter](https://github.com/JezerM/web-greeter) / [nody-greeter](https://github.com/JezerM/nody-greeter). The no longer maintained [Antergos/web-greeter](https://github.com/Antergos/web-greeter) is not supported.
 
@@ -63,15 +72,9 @@ This theme is developed for [web-greeter](https://github.com/JezerM/web-greeter)
 make build
 ```
 
-### Installation
-
+### Run in dev mode
 ```sh
-sudo make install
-```
-
-### Uninstall
-```sh
-sudo make uninstall
+make dev
 ```
 
 ## Contributing

@@ -19,6 +19,10 @@
 <style>
     #background {
 		@apply h-screen w-screen bg-cover bg-center absolute;
+        height: calc(100% + 50px);
+        width: calc(100% + 50px);
+        left: -25px;
+        top: -25px;
         background-image: var(--bg-image);
     }
 
