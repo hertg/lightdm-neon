@@ -260,9 +260,11 @@ export class Greeter implements GreeterClass {
             this.show_prompt._emit("Password: ", 1);
         } else {
             if (response === this.mock_password) {
-                this.is_authenticated = true;
-                this.in_authentication = false;
-                this.authentication_complete._emit();
+                setTimeout(() => {
+                    this.is_authenticated = true;
+                    this.in_authentication = false;
+                    this.authentication_complete._emit();
+                }, 250);
             } else {
                 setTimeout(() => {
                     this.is_authenticated = false;
@@ -285,7 +287,8 @@ export class Greeter implements GreeterClass {
         return false;
     }
     start_session(session: string | null): boolean {
-        console.log("Session:", session ?? this.default_session);
+        let s = session ?? this.default_session;
+        alert(`starting '${s}' session`);
         return true;
     }
 }
