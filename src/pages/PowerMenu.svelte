@@ -6,19 +6,19 @@
 <Container>
     <div class="container">
         {#if window.lightdm.can_hibernate}
-            <BigButton icon="Moon24" text="Hibernate" on:click={window.lightdm.hibernate} />
+            <BigButton icon="Moon24" text="Hibernate" on:click={() => window.lightdm.hibernate()} />
         {/if}
     
         {#if window.lightdm.can_suspend}
-            <BigButton icon="NoEntry24" text="Suspend" on:click={window.lightdm.suspend} />
+            <BigButton icon="NoEntry24" text="Suspend" on:click={() => window.lightdm.suspend()} />
         {/if}
     
         {#if window.lightdm.can_restart}
-            <BigButton icon="Sync24" text="Restart" on:click={window.lightdm.restart} />
+            <BigButton icon="Sync24" text="Restart" on:click={() => window.lightdm.restart()} />
         {/if}
     
         {#if window.lightdm.can_shutdown}
-            <BigButton icon="Plug24" text="Shutdown" on:click={window.lightdm.shutdown} />
+            <BigButton icon="Plug24" text="Shutdown" on:click={() => window.lightdm.shutdown()} />
         {/if}
     </div>
 </Container>

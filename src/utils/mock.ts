@@ -242,15 +242,19 @@ export class Greeter implements GreeterClass {
     }
 
     hibernate() {
+        alert('hibernate');
         return true;
     }
     restart() {
+        alert('restart');
         return true;
     }
     shutdown() {
+        alert('shutdown')
         return true;
     }
     suspend() {
+        alert('suspend');
         return true;
     }
     respond(response: string) {
