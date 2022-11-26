@@ -5,6 +5,7 @@ import type {
     Greeter as GreeterClass,
     GreeterConfig as GreeterConfigClass,
     ThemeUtils as ThemeUtilsClass,
+    LightDMBattery,
 } from "nody-greeter-types";
 
 export class LightDMLanguage {
@@ -70,18 +71,18 @@ export class LightDMSession {
 
 export class Signal implements SignalClass {
     _name: string;
-    _callbacks: Function[] = []; // eslint-disable-line
+    _callbacks: ((...args: unknown[]) => void)[] = [];
 
     constructor(name: string) {
         this._name = name;
     }
 
-    connect(callback: Function): void {
+    connect(callback: (...args: any[]) => void): void {
         if (typeof callback !== "function") return;
         this._callbacks.push(callback);
     }
 
-    disconnect(callback: Function): void {
+    disconnect(callback: () => void): void {
         const ind = this._callbacks.findIndex((cb) => {
             return cb === callback;
         });
@@ -89,7 +90,7 @@ export class Signal implements SignalClass {
         this._callbacks.splice(ind, 1);
     }
 
-    _emit(...args: [...any]) {
+    _emit(...args: unknown[]): void {
         this._callbacks.forEach((cb) => {
             if (typeof cb !== "function") return;
             cb(...args);
@@ -114,7 +115,8 @@ export class Greeter implements GreeterClass {
     autologin_guest = false;
     autologin_timeout = 0;
     autologin_user = "";
-    batteryData = {
+
+    private _battery: LightDMBattery = {
         name: "BAT0",
         level: 85,
         status: "Discharging",
@@ -123,6 +125,13 @@ export class Greeter implements GreeterClass {
         capacity: 100,
         watt: 0,
     };
+    get battery_data(): LightDMBattery {
+        return this._battery;
+    }
+    get batteryData(): LightDMBattery {
+        return this._battery;
+    }
+
     private _brightness = 50;
     get brightness(): number {
         return this._brightness;
@@ -377,14 +386,14 @@ export class ThemeUtils implements ThemeUtilsClass {
         let response = [];
         if (path.startsWith("/usr/share/web-greeter/themes/neon/")) {
             response = [
-                "assets/img/backgrounds/arcade.jpg", 
-                "assets/img/backgrounds/canyon.jpg", 
-                "assets/img/backgrounds/computer.jpg", 
-                "assets/img/backgrounds/paper.jpg", 
-                "assets/img/backgrounds/plants.jpg", 
-                "assets/img/backgrounds/purple.jpg", 
-                "assets/img/backgrounds/splashes.jpg", 
-                "assets/img/backgrounds/supermarket.jpg", 
+                "assets/img/backgrounds/arcade.jpg",
+                "assets/img/backgrounds/canyon.jpg",
+                "assets/img/backgrounds/computer.jpg",
+                "assets/img/backgrounds/paper.jpg",
+                "assets/img/backgrounds/plants.jpg",
+                "assets/img/backgrounds/purple.jpg",
+                "assets/img/backgrounds/splashes.jpg",
+                "assets/img/backgrounds/supermarket.jpg",
                 "assets/img/backgrounds/urban.jpg"
             ];
         }
