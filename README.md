@@ -1,17 +1,17 @@
 <div align="center">
   <h1><strong>LightDM Neon Theme</strong></h1>
   <p>
-    <strong>A modern and customizable theme for <a href="https://github.com/JezerM/web-greeter">web-greeter</a> in a nostalgic neon look</strong>
+    <strong>A modern and customizable theme for <a href="https://github.com/JezerM/nody-greeter">nody-greeter</a> / <a href="https://github.com/JezerM/web-greeter">web-greeter</a> in a nostalgic neon look</strong>
   </p>
   <p>
-    <a href="#">
-        <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/hertg/lightdm-neon" />
+    <a href="https://github.com/hertg/lightdm-neon/releases">
+        <img alt="Latest Github Release" src="https://img.shields.io/github/v/tag/hertg/lightdm-neon?logo=github" />
     </a>
     <a href="https://hertg.github.io/lightdm-neon/">
-        <img alt="Github Pages Deployment" src="https://img.shields.io/github/deployments/hertg/lightdm-neon/github-pages?label=demo">
+        <img alt="Svelte version" src="https://img.shields.io/github/package-json/dependency-version/hertg/lightdm-neon/dev/svelte?logo=svelte">
     </a>
     <a href="#">
-        <img alt="License Information" src="https://img.shields.io/github/license/hertg/lightdm-neon">
+        <img alt="License Information" src="https://img.shields.io/github/license/hertg/lightdm-neon?logo=gnu">
     </a>
   </p>
 </div>

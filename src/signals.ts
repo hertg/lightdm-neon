@@ -1,5 +1,6 @@
 import { get } from "svelte/store";
 import { authenticating, selectedSession } from "./store/runtime";
+import { notify } from "./utils/notification";
 
 export const connectSignals = () => {
     console.debug(`connecting to lightdm signals using theme`, window.theme);
@@ -24,7 +25,7 @@ export const connectSignals = () => {
 		console.debug("authentication_complete");
 		authenticating.update(_ => false);
 		if (!window.lightdm?.is_authenticated) {
-			window.lightdm.show_message._emit("Authentication Failed", "error");
+			notify("Authentication Failed", 1);
 			window.lightdm.authenticate(window.lightdm.authentication_user);
 		} else {
 			console.debug("authentication successful, start session");
