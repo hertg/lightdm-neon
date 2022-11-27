@@ -3,7 +3,7 @@ name: Build
 
 on:
   workflow_call:
-    inputs:
+#    inputs:
 #      go-version:
 #        required: true
 #        type: string

@@ -3,7 +3,7 @@ name: Create Github Release
 
 on:
   workflow_call:
-    inputs:
+#    inputs:
 #      binary:
 #        type: string
 #        required: true
