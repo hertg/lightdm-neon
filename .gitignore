@@ -1,5 +1,6 @@
 /node_modules/
 public/assets/
 public/bundle.*
+/.pkgbuild/
 
 .DS_Store
