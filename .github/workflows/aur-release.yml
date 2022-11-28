@@ -27,7 +27,7 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v3
         with:
-          name: build.tar.gz
+          name: build
           path: ./download
 
       - name: Export Checksum

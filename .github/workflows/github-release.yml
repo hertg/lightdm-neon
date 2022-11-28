@@ -19,7 +19,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: build.tar.gz
+          name: build
           path: ./download
 
       - name: Create Github Release
