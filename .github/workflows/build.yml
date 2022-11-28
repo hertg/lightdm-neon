@@ -3,16 +3,6 @@ name: Build
 
 on:
   workflow_call:
-#    inputs:
-#      go-version:
-#        required: true
-#        type: string
-#      go-arch:
-#        required: true
-#        type: string
-#      filename:
-#        required: true
-#        type: string
 
 jobs:
   build:
@@ -21,7 +11,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # without that 'git describe --tags' may result
           # in 'fatal: No names found, cannot describe anything.'
