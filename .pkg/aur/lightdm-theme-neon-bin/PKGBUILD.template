@@ -1,0 +1,19 @@
+pkgname=$_pkgname
+pkgver=$_pkgver
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
+pkgrel=1
+arch=('any')
+license=('GPL')
+url='https://github.com/hertg/lightdm-neon'
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+source=($_source)
+sha256sums=($_sha256sum)
+
+package() {
+  cd $pkgname
+  install -dm755 ${pkgdir}/usr/share/web-greeter/themes/neon
+  cp -r public/. ${pkgdir}/usr/share/web-greeter/themes/neon
+}
