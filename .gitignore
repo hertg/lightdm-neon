@@ -2,5 +2,6 @@
 public/assets/
 public/bundle.*
 /.pkgbuild/
+/bin/
 
 .DS_Store

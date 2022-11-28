@@ -12,20 +12,19 @@ jobs:
   release:
     runs-on: ubuntu-latest
     name: Release
-#    name: Release ${{ inputs.binary }}
     steps:
 
       - name: Checkout
         uses: actions/checkout@v2
 
-#      - uses: actions/download-artifact@v3
-#        with:
-#          name: ${{ inputs.binary }}
-#          path: ./download
+      - uses: actions/download-artifact@v3
+        with:
+          name: build.tar.gz
+          path: ./download
 
       - name: Create Github Release
         uses: softprops/action-gh-release@v1
         with:
           draft: false
-#          files: download/${{ inputs.binary }}
+          files: download/build.tar.gz
           prerelease: ${{ contains(github.ref, '-rc.') }}

@@ -28,16 +28,23 @@ jobs:
           # see https://stackoverflow.com/a/71721059/2726733
           fetch-depth: 0
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+      - name: Install
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Prepare bin directory
+        run: mkdir -p ./bin
 
-#      - name: Create SHA256 Checksum
-#        run: sha256sum ./bin/${{ env.BINARY_NAME }} > ./bin/sha256sum.txt || exit $?
+      - name: Package build
+        run: tar -czvf ./bin/build.tar.gz ./public
 
-#      - name: Upload binary
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: ${{ env.BINARY_NAME }}
-#          path: ./bin/*
+      - name: Create SHA256 Checksum
+        run: sha256sum ./bin/build.tar.gz > ./bin/sha256sum.txt || exit $?
+
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.BINARY_NAME }}
+          path: ./bin/*
