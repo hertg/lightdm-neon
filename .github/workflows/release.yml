@@ -19,7 +19,7 @@ jobs:
       tag: ${{ steps.vars.outputs.tag }}
     steps:
       - id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
 
   release:
     name: Github Release

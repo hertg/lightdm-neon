@@ -59,13 +59,13 @@ jobs:
           ssh_private_key: ${{ secrets.AUR_PRIVATE_KEY }}
           commit_message: New release via github actions
 
-#      - name: Publish lightdm-theme-neon-bin
-#        uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
-#        with:
-#          pkgname: lightdm-theme-neon-bin
-#          pkgbuild: ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD
-#          force_push: true
-#          commit_username: ${{ secrets.AUR_USERNAME }}
-#          commit_email: ${{ secrets.AUR_EMAIL }}
-#          ssh_private_key: ${{ secrets.AUR_PRIVATE_KEY }}
-#          commit_message: New release via github actions
+      - name: Publish lightdm-theme-neon-bin
+        uses: KSXGitHub/github-actions-deploy-aur@v2.5.0
+        with:
+          pkgname: lightdm-theme-neon-bin
+          pkgbuild: ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD
+          force_push: true
+          commit_username: ${{ secrets.AUR_USERNAME }}
+          commit_email: ${{ secrets.AUR_EMAIL }}
+          ssh_private_key: ${{ secrets.AUR_PRIVATE_KEY }}
+          commit_message: New release via github actions
