@@ -1,6 +1,6 @@
 {
   "name": "lightdm-neon",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "build": "rollup -c",
