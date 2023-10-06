@@ -52,7 +52,7 @@ cat << EOF > ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD
 # This file is generated automatically via CI
 pkgname=lightdm-theme-neon-bin
 pkgver=$pkgver
-pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look, binary version'
 pkgrel=1
 arch=('any')
 license=('GPL')
