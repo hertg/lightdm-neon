@@ -3,39 +3,71 @@
 version=$1
 checksum=$2
 
+# remove the "v" prefix
+pkgver=$(echo ${version#v} | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+
 #### lightdm-theme-neon ####
 
 mkdir -p ./.pkgbuild/lightdm-theme-neon
-cp ./.pkg/aur/lightdm-theme-neon/* ./.pkgbuild/lightdm-theme-neon
 
 cat << EOF > ./.pkgbuild/lightdm-theme-neon/PKGBUILD
 # Maintainer: hertg <aur@her.tg>
-# This file is generated automatically
-_version=$version
-_versionWithoutPrefix=${version#v}
-_pkgname=lightdm-theme-neon
-_pkgver=$(echo $version | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-_source=\${_pkgname}-\${_version}::https://github.com/hertg/lightdm-neon/archive/refs/tags/$version.tar.gz
+# This file is generated automatically via CI
+pkgname=lightdm-theme-neon
+pkgver=$pkgver
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
+pkgrel=1
+arch=('any')
+license=('GPL')
+url='https://github.com/hertg/lightdm-neon'
+makedepends=('npm' 'git')
+optdepends=()
+provides=()
+conflicts=()
+source=("\${pkgname}-${pkgver}.tar.gz::https://github.com/hertg/lightdm-neon/archive/refs/tags/$version.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  npm install
+  npm run build
+}
+
+package() {
+  # note: the directory is called "lightdm-neon-{version}", because the github 
+  # archive extracts to a directory called "{repository}-{version}", not what
+  # is specified in the source() of the PKGBUILD
+
+  cd \${srcdir}/lightdm-neon-\${pkgver}
+  install -dm755 "\${pkgdir}/usr/share/web-greeter/themes/neon"
+  cp -r public/. "\${pkgdir}/usr/share/web-greeter/themes/neon"
+}
 EOF
-
-cat ./.pkgbuild/lightdm-theme-neon/PKGBUILD.template >> ./.pkgbuild/lightdm-theme-neon/PKGBUILD
-rm ./.pkgbuild/lightdm-theme-neon/PKGBUILD.template
-
 
 #### lightdm-theme-neon-bin ####
 
 mkdir -p ./.pkgbuild/lightdm-theme-neon-bin
-cp ./.pkg/aur/lightdm-theme-neon-bin/* ./.pkgbuild/lightdm-theme-neon-bin
 
 cat << EOF > ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD
 # Maintainer: hertg <aur@her.tg>
-# This file is generated automatically
-_version=$version
-_pkgname=lightdm-theme-neon-bin
-_pkgver=$(echo $version | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-_sha256sum=$checksum
-_source=\${_pkgname}-\${_pkgver}::https://github.com/hertg/lightdm-neon/releases/download/$version/build.tar.gz
+# This file is generated automatically via CI
+pkgname=lightdm-theme-neon-bin
+pkgver=$pkgver
+pkgdesc='Modern and customizable theme for web-greeter with a nostalgic neon look'
+pkgrel=1
+arch=('any')
+license=('GPL')
+url='https://github.com/hertg/lightdm-neon'
+makedepends=()
+optdepends=()
+provides=()
+conflicts=()
+source=("lightdm-theme-neon-bin-${pkgver}.tar.gz::https://github.com/hertg/lightdm-neon/releases/download/$version/build.tar.gz")
+sha256sums=(${checksum})
+
+package() {
+  cd \${srcdir}
+  install -dm755 "\${pkgdir}/usr/share/web-greeter/themes/neon"
+  cp -r public/. "\${pkgdir}/usr/share/web-greeter/themes/neon"
+}
 EOF
 
-cat ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD.template >> ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD
-rm ./.pkgbuild/lightdm-theme-neon-bin/PKGBUILD.template

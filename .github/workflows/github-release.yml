@@ -27,4 +27,5 @@ jobs:
         with:
           draft: false
           files: download/build.tar.gz
+          body_path: CHANGELOG.md
           prerelease: ${{ contains(github.ref, '-rc.') }}
