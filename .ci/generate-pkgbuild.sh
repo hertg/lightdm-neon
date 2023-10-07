@@ -38,7 +38,7 @@ package() {
   # archive extracts to a directory called "{repository}-{version}", not what
   # is specified in the source() of the PKGBUILD
 
-  cd \${srcdir}/lightdm-neon-\${pkgver}
+  cd "\${srcdir}/lightdm-neon-\${pkgver}"
   install -dm755 "\${pkgdir}/usr/share/web-greeter/themes/neon"
   cp -r public/. "\${pkgdir}/usr/share/web-greeter/themes/neon"
 }
@@ -66,7 +66,7 @@ source=("lightdm-theme-neon-bin-${pkgver}.tar.gz::https://github.com/hertg/light
 sha256sums=(${checksum})
 
 package() {
-  cd \${srcdir}
+  cd "\${srcdir}"
   install -dm755 "\${pkgdir}/usr/share/web-greeter/themes/neon"
   cp -r public/. "\${pkgdir}/usr/share/web-greeter/themes/neon"
 }
