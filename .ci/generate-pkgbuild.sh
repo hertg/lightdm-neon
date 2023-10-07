@@ -28,6 +28,7 @@ source=("\${pkgname}-${pkgver}.tar.gz::https://github.com/hertg/lightdm-neon/arc
 sha256sums=('SKIP')
 
 build() {
+  cd lightdm-neon-\${pkgver}
   npm install
   npm run build
 }
