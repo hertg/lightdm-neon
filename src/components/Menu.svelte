@@ -7,7 +7,7 @@
 
     let sessionName = "";
 
-    selectedSession.subscribe(s => {
+    selectedSession.subscribe(_s => {
         sessionName = window.lightdm.sessions.find(k => k.key === $selectedSession)?.name; 
     })
 
