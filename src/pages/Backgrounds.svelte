@@ -52,7 +52,7 @@
 
 <style>
     #backgrounds {
-        @apply flex flex-col gap-8 text-white fill-white;
+        @apply flex flex-col gap-8 text-white fill-white overflow-auto m-auto h-full;
     }
 
 	.image-group {
@@ -60,7 +60,7 @@
 	}
 
 	.image {
-		@apply w-256px h-144px hover:bg-gray-400 bg-cover bg-center border border-gray-400 bg-blend-overlay transition cursor-pointer;
+		@apply flex-grow w-256px h-144px hover:bg-gray-400 bg-cover bg-center border border-gray-400 bg-blend-overlay transition cursor-pointer;
         background-image: var(--bg-image);
 	}
 </style>
